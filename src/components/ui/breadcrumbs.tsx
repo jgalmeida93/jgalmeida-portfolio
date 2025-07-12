@@ -33,7 +33,7 @@ export function Breadcrumbs({ className }: BreadcrumbsProps) {
     const breadcrumbs: BreadcrumbItem[] = [];
     let currentPath = "";
 
-    segments.forEach((segment, index) => {
+    segments.forEach((segment) => {
       currentPath += `/${segment}`;
       const name = segment.charAt(0).toUpperCase() + segment.slice(1);
       breadcrumbs.push({

@@ -77,11 +77,11 @@ export function ContactSection({ contact }: ContactSectionProps) {
           className="mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Let's Connect
+            Let&apos;s Connect
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            I'm always interested in new opportunities and interesting projects.
-            Let's discuss how we can work together.
+            I&apos;m always interested in new opportunities and interesting projects.
+            Let&apos;s discuss how we can work together.
           </p>
         </motion.div>
 

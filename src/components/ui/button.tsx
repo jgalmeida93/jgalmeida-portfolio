@@ -31,7 +31,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     if (asChild) {
       return (
-        <span className={baseClasses} {...(props as any)} ref={ref as any} />
+        <span
+          className={baseClasses}
+          {...(props as React.HTMLAttributes<HTMLSpanElement>)}
+          ref={ref as React.Ref<HTMLSpanElement>}
+        />
       );
     }
 

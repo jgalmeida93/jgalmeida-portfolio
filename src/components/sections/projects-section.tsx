@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Project } from "@/types/portfolio";
+import Image from "next/image";
 
 interface ProjectsSectionProps {
   projects: Project[];
@@ -35,9 +36,11 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       <Card variant="interactive" className="h-full">
         <CardHeader>
           {project.imageUrl && (
-            <img
+            <Image
               src={project.imageUrl}
               alt={project.title}
+              width={600}
+              height={240}
               className="w-full h-40 object-cover rounded-md mb-4"
             />
           )}

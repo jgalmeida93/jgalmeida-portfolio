@@ -83,7 +83,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
             Experience
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            My professional journey and the impact I've made at each role.
+            My professional journey and the impact I&apos;ve made at each role.
           </p>
         </motion.div>
 

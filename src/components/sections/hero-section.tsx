@@ -3,18 +3,6 @@
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
-import { Playfair_Display } from "next/font/google";
-import { Space_Grotesk } from "next/font/google";
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700"],
-  variable: "--font-playfair",
-});
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["700"],
-  variable: "--font-space-grotesk",
-});
 
 interface HeroSectionProps {
   name: string;

@@ -281,7 +281,7 @@ export function BackgroundArtifact() {
       size: generateRandomSize(),
       blur: Math.random() > 0.5 ? "blur-2xl" : "blur-3xl",
     }));
-  }, []);
+  }, [numArtifacts]);
 
   return (
     <>

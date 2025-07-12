@@ -91,10 +91,10 @@ export function Breadcrumbs({ className }: BreadcrumbsProps) {
                 <HomeIcon className="h-4 w-4" />
               </Link>
 
-              {breadcrumbs.map((item, index) => (
+              {breadcrumbs.map((item) => (
                 <div key={item.href} className="flex items-center space-x-2">
                   <ChevronLeftIcon className="h-4 w-4 text-zinc-600" />
-                  {index === breadcrumbs.length - 1 ? (
+                  {breadcrumbs[breadcrumbs.length - 1].href === item.href ? (
                     <span className="text-sm font-medium text-white">
                       {item.name}
                     </span>

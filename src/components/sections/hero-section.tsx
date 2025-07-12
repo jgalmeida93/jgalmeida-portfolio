@@ -41,7 +41,7 @@ export function HeroSection({
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <span
-              className={`text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-purple-500`}
+              className="text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-pink-500 to-purple-500 animate-gradient-x"
               style={{ fontFamily: "var(--font-space-grotesk)" }}
             >
               {fullName}

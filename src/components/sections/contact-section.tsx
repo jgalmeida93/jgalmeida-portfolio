@@ -80,8 +80,8 @@ export function ContactSection({ contact }: ContactSectionProps) {
             Let&apos;s Connect
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            I&apos;m always interested in new opportunities and interesting projects.
-            Let&apos;s discuss how we can work together.
+            I&apos;m always interested in new opportunities and interesting
+            projects. Let&apos;s discuss how we can work together.
           </p>
         </motion.div>
 

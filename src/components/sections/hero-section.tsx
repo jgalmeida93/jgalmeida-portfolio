@@ -70,11 +70,12 @@ export function HeroSection({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex flex-col gap-3 w-full mx-auto sm:flex-row sm:justify-center sm:gap-4"
           >
             <Button
               size="lg"
               onClick={onCTAClick}
-              className="mr-4 cursor-pointer"
+              className="w-full sm:w-auto cursor-pointer"
             >
               View My Work
             </Button>
@@ -82,7 +83,7 @@ export function HeroSection({
               variant="outline"
               size="lg"
               onClick={handleDownloadCV}
-              className="cursor-pointer"
+              className="w-full sm:w-auto cursor-pointer"
             >
               Download CV
             </Button>

@@ -85,7 +85,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
           </p>
         </motion.div>
 
-        <div className="flex items-center justify-center gap-4 max-w-xs mx-auto">
+        <div className="flex flex-col w-full gap-3 items-center justify-center md:flex-row md:gap-4 md:w-auto">
           {socialLinks.map((link, index) => (
             <SocialLink
               key={link.label}

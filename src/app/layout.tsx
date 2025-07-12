@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navigation } from "@/components/ui/navigation";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { SocialLinks } from "@/components/ui/social-links";
 import { BackgroundArtifact } from "@/components/ui/background-artifact";
 
@@ -48,6 +49,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-zinc-950">
         <BackgroundArtifact />
         <Navigation items={navigationItems} />
+        <Breadcrumbs />
         <main className="flex-1 flex flex-col items-center justify-center px-4">
           {children}
         </main>

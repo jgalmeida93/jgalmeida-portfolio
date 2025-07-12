@@ -10,7 +10,7 @@ export const portfolioData: PortfolioData = {
       id: "1",
       title: "CodeBrew Labs Blog",
       description:
-        "Plataforma de conteúdo técnico sobre desenvolvimento web com artigos e tutoriais. Desenvolvido com foco em performance, SEO e boas práticas modernas.",
+        "Technical content platform focused on web development, featuring articles and tutorials. Built with an emphasis on performance, SEO, and modern best practices.",
       technologies: [
         "Next.js",
         "React",
@@ -26,13 +26,14 @@ export const portfolioData: PortfolioData = {
       id: "2",
       title: "Timesheesh - Time Tracking App",
       description:
-        "Aplicação de controle de tempo e gestão de projetos com geração de relatórios, autenticação, e envio de PDFs via WhatsApp. Desenvolvida com stack moderna e arquitetura modular.",
+        "Time tracking and project management application with reporting features, authentication, and PDF delivery via WhatsApp. Built with a modern stack and modular architecture.",
       technologies: [
         "React",
         "Next.js",
         "TypeScript",
         "Tailwind CSS",
         "Node.js",
+        "SQLite",
       ],
       demoUrl: "https://timesheesh-frontend.vercel.app/",
       featured: true,

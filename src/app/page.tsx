@@ -5,7 +5,6 @@ import { portfolioData } from "@/data/portfolio";
 
 export default function HomePage() {
   const handleCTAClick = () => {
-    // Navigate to projects page
     window.location.href = "/projects";
   };
 

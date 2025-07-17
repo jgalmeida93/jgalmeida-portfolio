@@ -3,7 +3,7 @@ import "./globals.css";
 import { Navigation } from "@/components/ui/navigation";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { SocialLinks } from "@/components/ui/social-links";
-import { BackgroundArtifact } from "@/components/ui/background-artifact";
+import DarkVeil from "@/components/ui/dark-veil-background";
 
 export const metadata: Metadata = {
   title: "Jonas G. Almeida - Portfolio",
@@ -47,7 +47,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-zinc-950">
-        <BackgroundArtifact />
+        <div className="fixed inset-0 -z-10">
+          <DarkVeil
+            hueShift={37}
+            noiseIntensity={0.01}
+            scanlineIntensity={0.1}
+            speed={0.2}
+            scanlineFrequency={3.0}
+            warpAmount={4}
+            resolutionScale={2}
+          />
+        </div>
         <Navigation items={navigationItems} />
         <Breadcrumbs />
         <main className="flex-1 flex flex-col items-center justify-center px-4">

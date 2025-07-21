@@ -48,6 +48,16 @@ export const portfolioData: PortfolioData = {
       featured: true,
       imageUrl: "/portfolio.png",
     },
+    {
+      id: "4",
+      title: "Neurodecks",
+      description:
+        "Neurodecks is a platform that allows you to create and manage your decks of flashcards. It's a simple and easy to use tool that helps you study and memorize information.",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      featured: true,
+      demoUrl: "https://neurodecks.com.br/",
+      imageUrl: "/neurodecks.png",
+    },
   ],
 
   experience: [

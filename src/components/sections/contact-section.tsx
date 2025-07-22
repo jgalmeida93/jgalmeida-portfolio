@@ -83,7 +83,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
           </div>
           <p className="text-base md:text-lg text-zinc-400 leading-relaxed max-w-3xl mx-auto">
-            Let's connect.
+            Let&apos;s connect.
           </p>
         </motion.div>
 

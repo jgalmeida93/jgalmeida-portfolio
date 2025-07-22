@@ -5,10 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import { SiGnometerminal } from "react-icons/si";
 import { FaBolt } from "react-icons/fa6";
-// import { VscTerminalBash } from "react-icons/vsc";
-import { SiGamejolt } from "react-icons/si";
 
 export interface NavigationItem {
   name: string;

@@ -10,11 +10,7 @@ interface HeroSectionProps {
   onCTAClick?: () => void;
 }
 
-export function HeroSection({
-  name: fullName,
-  title,
-  onCTAClick,
-}: HeroSectionProps) {
+export function HeroSection({ name: fullName, onCTAClick }: HeroSectionProps) {
   const handleDownloadCV = () => {
     const link = document.createElement("a");
     link.href = "/jg_almeida_cv.pdf";

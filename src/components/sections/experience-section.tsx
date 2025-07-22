@@ -71,7 +71,6 @@ function ExperienceCard({ experience, index }: ExperienceCardProps) {
 export function ExperienceSection({
   experience,
   bio,
-  name,
   title,
 }: ExperienceSectionProps) {
   return (

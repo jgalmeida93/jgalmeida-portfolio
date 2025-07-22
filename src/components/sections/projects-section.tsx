@@ -105,12 +105,15 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Featured Projects
-          </h2>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+          <div className="mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              Projects
+            </h1>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+          </div>
+          <p className="text-base md:text-lg text-zinc-400 leading-relaxed max-w-3xl mx-auto">
             A selection of projects that showcase my skills and passion for
             creating exceptional digital experiences.
           </p>

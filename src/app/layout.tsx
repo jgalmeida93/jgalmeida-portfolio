@@ -10,25 +10,11 @@ export const metadata: Metadata = {
   description: "Software Engineer portfolio showcasing projects and experience",
   icons: {
     icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "32x32" },
     ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-    other: [
-      {
-        url: "/android-chrome-192x192.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-      {
-        url: "/android-chrome-512x512.png",
-        sizes: "512x512",
-        type: "image/png",
-      },
-    ],
+    shortcut: "/favicon.ico",
+    apple: "/favicon.svg",
   },
 };
 
@@ -49,18 +35,18 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-zinc-950">
         <div className="fixed inset-0 -z-10">
           <DarkVeil
-            hueShift={37}
+            hueShift={330}
             noiseIntensity={0.01}
             scanlineIntensity={0.1}
             speed={0.2}
-            scanlineFrequency={3.0}
-            warpAmount={4}
-            resolutionScale={2}
+            scanlineFrequency={4}
+            warpAmount={5}
+            resolutionScale={1}
           />
         </div>
         <Navigation items={navigationItems} />
         <Breadcrumbs />
-        <main className="flex-1 flex flex-col items-center justify-center px-4">
+        <main className="flex-1 flex flex-col items-center justify-center px-4 pt-8">
           {children}
         </main>
         <SocialLinks />

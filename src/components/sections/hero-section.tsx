@@ -7,14 +7,12 @@ import { Button } from "@/components/ui/button";
 interface HeroSectionProps {
   name: string;
   title: string;
-  bio: string;
   onCTAClick?: () => void;
 }
 
 export function HeroSection({
   name: fullName,
   title,
-  bio,
   onCTAClick,
 }: HeroSectionProps) {
   const handleDownloadCV = () => {
@@ -27,7 +25,7 @@ export function HeroSection({
   };
 
   return (
-    <section className="100vh flex items-center justify-center px-6 lg:px-8">
+    <section className="min-h-[calc(100vh-5rem)] flex items-center justify-center px-6 lg:px-8">
       <div className="mx-auto max-w-4xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,41 +33,18 @@ export function HeroSection({
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-5xl md:text-7xl font-bold text-white mb-6"
+            className="text-6xl md:text-8xl font-bold text-white mb-8 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span
-              className="text-6xl md:text-8xl font-extrabold text-white"
-              style={{ fontFamily: "var(--font-space-grotesk)" }}
-            >
-              {fullName}
-            </span>
+            {fullName}
           </motion.h1>
-
-          <motion.h2
-            className="text-xl md:text-2xl text-zinc-400 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            {title}
-          </motion.h2>
-
-          <motion.p
-            className="text-lg text-zinc-300 leading-relaxed max-w-2xl mx-auto mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            {bio}
-          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-col gap-3 w-full mx-auto sm:flex-row sm:justify-center sm:gap-4"
           >
             <Button
@@ -88,18 +63,6 @@ export function HeroSection({
               Download CV
             </Button>
           </motion.div>
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          ></motion.div>
         </motion.div>
       </div>
     </section>

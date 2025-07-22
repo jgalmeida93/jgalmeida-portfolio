@@ -6,7 +6,12 @@ import { portfolioData } from "@/data/portfolio";
 export default function ExperiencePage() {
   return (
     <main>
-      <ExperienceSection experience={portfolioData.experience} />
+      <ExperienceSection
+        experience={portfolioData.experience}
+        name={portfolioData.name}
+        title={portfolioData.title}
+        bio={portfolioData.bio}
+      />
     </main>
   );
 }

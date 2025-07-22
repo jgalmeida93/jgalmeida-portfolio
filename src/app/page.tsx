@@ -13,7 +13,6 @@ export default function HomePage() {
       <HeroSection
         name={portfolioData.name}
         title={portfolioData.title}
-        bio={portfolioData.bio}
         onCTAClick={handleCTAClick}
       />
     </main>

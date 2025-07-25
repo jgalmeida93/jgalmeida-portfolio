@@ -24,9 +24,9 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "2",
-      title: "Timesheesh - Time Tracking App",
+      title: "SeisZora - Time Tracking App",
       description:
-        "Time tracking and project management application with reporting features, authentication, and PDF delivery via WhatsApp. Built with a modern stack and modular architecture.",
+        "Time tracking and project management application with reporting features, authentication, and PDF delivery. Built with a modern stack and modular architecture.",
       technologies: [
         "React",
         "Next.js",
@@ -35,7 +35,7 @@ export const portfolioData: PortfolioData = {
         "Node.js",
         "SQLite",
       ],
-      demoUrl: "https://timesheesh-frontend.vercel.app/",
+      demoUrl: "https://seiszora.com.br/",
       featured: true,
       imageUrl: "/timesheet.png",
     },

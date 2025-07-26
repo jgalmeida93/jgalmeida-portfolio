@@ -4,6 +4,7 @@ import { Navigation } from "@/components/ui/navigation";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { SocialLinks } from "@/components/ui/social-links";
 import DarkVeil from "@/components/ui/dark-veil-background";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Jonas G. Almeida - Portfolio",
@@ -48,6 +49,7 @@ export default function RootLayout({
         <Breadcrumbs />
         <main className="flex-1 flex flex-col items-center justify-center px-4 pt-8">
           {children}
+          <Analytics />
         </main>
         <SocialLinks />
       </body>

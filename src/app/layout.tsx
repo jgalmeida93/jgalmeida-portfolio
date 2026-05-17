@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import {
-  Big_Shoulders_Display,
+  Big_Shoulders,
   Fraunces,
   Inter,
   Space_Mono,
@@ -11,7 +11,7 @@ import { Navigation } from "@/components/ui/navigation";
 import { PaperTexture } from "@/components/ui/paper-texture";
 import { Analytics } from "@vercel/analytics/next";
 
-const bigShoulders = Big_Shoulders_Display({
+const bigShoulders = Big_Shoulders({
   subsets: ["latin"],
   weight: ["600", "700", "800", "900"],
   variable: "--font-big-shoulders",

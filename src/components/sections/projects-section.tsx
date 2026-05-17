@@ -98,9 +98,11 @@ function CatalogEntry({ project, index }: CatalogEntryProps) {
           {project.imageUrl ? (
             <Image
               src={project.imageUrl}
-              alt={project.title}
+              alt={`${project.title} — ${L(project.category)} project preview`}
               fill
               sizes="(min-width: 1024px) 58vw, 100vw"
+              priority={index === 0}
+              loading={index === 0 ? "eager" : "lazy"}
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             />
           ) : (

@@ -8,10 +8,10 @@ import {
   useMemo,
   useState,
 } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import type { Locale } from "@/types/portfolio";
 import {
   dictionary,
-  defaultLocale,
   defaultTheme,
   type Dictionary,
   type Theme,
@@ -31,30 +31,27 @@ interface AppContextValue {
 
 const AppContext = createContext<AppContextValue | null>(null);
 
-const LOCALE_KEY = "jg-portfolio-locale";
 const THEME_KEY = "jg-portfolio-theme";
 
-export function AppProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(defaultLocale);
+interface AppProviderProps {
+  initialLocale: Locale;
+  children: React.ReactNode;
+}
+
+export function AppProvider({ initialLocale, children }: AppProviderProps) {
+  const router = useRouter();
+  const pathname = usePathname();
   const [theme, setThemeState] = useState<Theme>(defaultTheme);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     try {
-      const storedLocale = localStorage.getItem(LOCALE_KEY) as Locale | null;
       const storedTheme = localStorage.getItem(THEME_KEY) as Theme | null;
-      if (storedLocale === "en" || storedLocale === "pt") {
-        setLocaleState(storedLocale);
-      } else {
-        const nav =
-          typeof navigator !== "undefined" ? navigator.language : "en";
-        if (nav?.toLowerCase().startsWith("pt")) setLocaleState("pt");
-      }
       if (storedTheme === "light" || storedTheme === "dark") {
         setThemeState(storedTheme);
       }
     } catch {
-      // localStorage unavailable; keep defaults
+      /* localStorage unavailable */
     }
     setHydrated(true);
   }, []);
@@ -69,44 +66,44 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     }
   }, [theme, hydrated]);
 
-  useEffect(() => {
-    if (!hydrated) return;
-    document.documentElement.lang = locale === "pt" ? "pt-BR" : "en";
-    try {
-      localStorage.setItem(LOCALE_KEY, locale);
-    } catch {
-      /* ignore */
-    }
-  }, [locale, hydrated]);
-
-  const setLocale = useCallback((l: Locale) => setLocaleState(l), []);
-  const setTheme = useCallback((t: Theme) => setThemeState(t), []);
-  const toggleLocale = useCallback(
-    () => setLocaleState((l) => (l === "en" ? "pt" : "en")),
-    []
+  const setLocale = useCallback(
+    (l: Locale) => {
+      if (l === initialLocale) return;
+      const stripped = (pathname || "/").replace(/^\/(en|pt)(?=\/|$)/, "");
+      router.push(`/${l}${stripped || ""}`);
+    },
+    [initialLocale, pathname, router]
   );
+
+  const toggleLocale = useCallback(
+    () => setLocale(initialLocale === "en" ? "pt" : "en"),
+    [initialLocale, setLocale]
+  );
+
+  const setTheme = useCallback((t: Theme) => setThemeState(t), []);
   const toggleTheme = useCallback(
     () => setThemeState((t) => (t === "dark" ? "light" : "dark")),
     []
   );
 
   const L = useCallback(
-    (value: { en: string; pt: string } | string) => localized(locale, value),
-    [locale]
+    (value: { en: string; pt: string } | string) =>
+      localized(initialLocale, value),
+    [initialLocale]
   );
 
   const value = useMemo<AppContextValue>(
     () => ({
-      locale,
+      locale: initialLocale,
       setLocale,
       toggleLocale,
       theme,
       setTheme,
       toggleTheme,
-      t: dictionary[locale],
+      t: dictionary[initialLocale],
       L,
     }),
-    [locale, theme, L, setLocale, setTheme, toggleLocale, toggleTheme]
+    [initialLocale, theme, L, setLocale, setTheme, toggleLocale, toggleTheme]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

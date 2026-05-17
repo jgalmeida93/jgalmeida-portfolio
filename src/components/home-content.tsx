@@ -10,7 +10,7 @@ import { Footer } from "@/components/ui/footer";
 import { useApp } from "@/contexts/app-context";
 import { portfolioData } from "@/data/portfolio";
 
-export default function HomePage() {
+export function HomeContent() {
   const { L, t } = useApp();
 
   return (
@@ -21,9 +21,9 @@ export default function HomePage() {
         availability={L(portfolioData.availability)}
         title={L(portfolioData.title)}
       />
-      <Marquee items={t.marquee.tags as unknown as string[]} variant="primary" />
+      <Marquee items={[...t.marquee.tags]} variant="primary" />
       <ProjectsSection projects={portfolioData.projects} />
-      <Marquee items={t.marquee.tags as unknown as string[]} variant="ink" />
+      <Marquee items={[...t.marquee.tags]} variant="ink" />
       <ExperienceSection experience={portfolioData.experience} />
       <AboutSection skills={portfolioData.skills} />
       <ContactSection

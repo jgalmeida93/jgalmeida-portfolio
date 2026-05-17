@@ -39,8 +39,6 @@ export function HeroSection({
           <span>{t.hero.preamble}</span>
           <span className="text-[var(--ink-faint)]">/</span>
           <span>{t.hero.issue}</span>
-          <span className="text-[var(--ink-faint)]">/</span>
-          <span>{t.hero.independent}</span>
         </div>
         <div className="flex items-center gap-3 mono text-[var(--ink-muted)]">
           <span>{location}</span>

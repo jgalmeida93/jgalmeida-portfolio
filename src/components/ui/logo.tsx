@@ -62,7 +62,7 @@ export function Logo({ variant = "full" }: LogoProps) {
           </span>
           <span className="mt-1 inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--ink-muted)]">
             <span className="inline-block h-px w-3 bg-[var(--primary)]" />
-            Independent · Maringá
+            Maringá — PR
             <span className="inline-block h-px w-3 bg-[var(--primary)]" />
           </span>
         </span>

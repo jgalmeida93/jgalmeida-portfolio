@@ -43,7 +43,7 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   title: "Jonas G. Almeida — Senior Software Engineer",
   description:
-    "Independent practice of Jonas G. Almeida, senior software engineer based in Maringá, PR. A catalog of selected work in editorial web, language tools and indie products.",
+    "Portfolio of Jonas G. Almeida, senior software engineer based in Maringá, PR. A catalog of selected work in editorial web, language tools and indie products.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },

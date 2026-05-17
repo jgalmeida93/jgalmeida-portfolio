@@ -17,7 +17,6 @@ const en = {
   hero: {
     preamble: "Vol. 01",
     issue: "Issue № 26",
-    independent: "Independent practice",
     since: "Est. 2018",
     tagline: "Code, craft, and the unglamorous middle.",
     cta: "Open the catalog",
@@ -32,7 +31,6 @@ const en = {
     tags: [
       "Built in Brazil",
       "Hand-coded",
-      "Independent",
       "Open to work",
       "Available worldwide",
       "Editorial web",
@@ -113,7 +111,6 @@ const pt: Dictionary = {
   hero: {
     preamble: "Vol. 01",
     issue: "Edição № 26",
-    independent: "Prática independente",
     since: "Desde 2018",
     tagline: "Código, capricho e o meio sem glamour.",
     cta: "Abrir o catálogo",
@@ -128,7 +125,6 @@ const pt: Dictionary = {
     tags: [
       "Feito no Brasil",
       "Código artesanal",
-      "Independente",
       "Aberto a propostas",
       "Disponível mundialmente",
       "Web editorial",

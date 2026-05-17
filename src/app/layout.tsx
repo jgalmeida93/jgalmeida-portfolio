@@ -1,30 +1,49 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import {
+  Big_Shoulders_Display,
+  Fraunces,
+  Inter,
+  Space_Mono,
+} from "next/font/google";
 import "./globals.css";
+import { AppProvider } from "@/contexts/app-context";
 import { Navigation } from "@/components/ui/navigation";
-import { Grain } from "@/components/ui/grain";
-import { AmbientGlow } from "@/components/ui/ambient-glow";
+import { PaperTexture } from "@/components/ui/paper-texture";
 import { Analytics } from "@vercel/analytics/next";
 
-const instrumentSerif = Instrument_Serif({
+const bigShoulders = Big_Shoulders_Display({
   subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
+  weight: ["600", "700", "800", "900"],
+  variable: "--font-big-shoulders",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-jetbrains-mono",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "Jonas G. Almeida — Senior Software Engineer",
   description:
-    "Portfolio of Jonas G. Almeida — Senior Software Engineer building considered, fast, production-grade web products.",
+    "Independent practice of Jonas G. Almeida, senior software engineer based in Maringá, PR. A catalog of selected work in editorial web, language tools and indie products.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -35,6 +54,25 @@ export const metadata: Metadata = {
   },
 };
 
+// Inline script to set theme + lang before React hydrates (prevents FOUC).
+const themeBootstrap = `
+(function() {
+  try {
+    var theme = localStorage.getItem('jg-portfolio-theme');
+    var locale = localStorage.getItem('jg-portfolio-locale');
+    if (theme !== 'light' && theme !== 'dark') theme = 'dark';
+    if (locale !== 'en' && locale !== 'pt') {
+      var nav = navigator.language || 'en';
+      locale = nav.toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
+    }
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.lang = locale === 'pt' ? 'pt-BR' : 'en';
+  } catch (e) {
+    document.documentElement.dataset.theme = 'dark';
+  }
+})();
+`;
+
 export default function RootLayout({
   children,
 }: {
@@ -43,14 +81,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${instrumentSerif.variable} ${jetbrainsMono.variable}`}
+      data-theme="dark"
+      className={`${bigShoulders.variable} ${fraunces.variable} ${inter.variable} ${spaceMono.variable}`}
     >
-      <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-        <AmbientGlow />
-        <Grain />
-        <Navigation />
-        <main className="relative z-10">{children}</main>
-        <Analytics />
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+      </head>
+      <body className="min-h-screen overflow-x-hidden">
+        <AppProvider>
+          <PaperTexture />
+          <Navigation />
+          <main className="relative z-10">{children}</main>
+          <Analytics />
+        </AppProvider>
       </body>
     </html>
   );

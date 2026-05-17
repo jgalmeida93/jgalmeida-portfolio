@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <defs>
-    <style>
-      @media (prefers-color-scheme: dark) {
-        .bg { fill: #0a0a0a; stroke: #ffffff; }
-        .icon { fill: #ffffff; }
-      }
-      @media (prefers-color-scheme: light) {
-        .bg { fill: #000000; stroke: #ffffff; }
-        .icon { fill: #ffffff; }
-      }
-    </style>
-  </defs>
-  <rect width="32" height="32" rx="6" class="bg" stroke-width="0.5"/>
-  <polygon points="24,9 18.5,9 22,3 12,3 8,15 13.5,15 8,29 24,9" class="icon"/>
-</svg> 
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Hard offset shadow -->
+  <g transform="rotate(-3 16 16)">
+    <rect x="5" y="6" width="22" height="22" rx="3" fill="#16110d"/>
+  </g>
+  <!-- Stamp body -->
+  <g transform="rotate(-3 16 16)">
+    <rect x="3" y="4" width="22" height="22" rx="3" fill="#d94545" stroke="#16110d" stroke-width="1.4"/>
+    <text x="14" y="20" text-anchor="middle" font-family="Arial Black, Helvetica, sans-serif" font-weight="900" font-size="14" fill="#f4ead5" letter-spacing="-1">JG</text>
+  </g>
+  <!-- Mustard sticker dot with star -->
+  <g transform="rotate(8 25 7)">
+    <circle cx="25" cy="7" r="4.5" fill="#ecb736" stroke="#16110d" stroke-width="1"/>
+    <text x="25" y="9.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#1a130e">★</text>
+  </g>
+</svg>

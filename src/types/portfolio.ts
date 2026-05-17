@@ -1,23 +1,27 @@
+export type Locale = "en" | "pt";
+
+export type LocalizedText = { en: string; pt: string };
+
 export interface Project {
   id: string;
   title: string;
-  description: string;
+  description: LocalizedText;
   technologies: string[];
   demoUrl?: string;
   githubUrl?: string;
   imageUrl?: string;
   featured: boolean;
   year?: string;
-  category?: string;
+  category: LocalizedText;
   accent?: string;
 }
 
 export interface Experience {
   id: string;
   company: string;
-  position: string;
-  duration: string;
-  description: string[];
+  position: LocalizedText;
+  duration: LocalizedText;
+  description: LocalizedText[];
   technologies: string[];
 }
 
@@ -37,11 +41,11 @@ export interface ContactInfo {
 
 export interface PortfolioData {
   name: string;
-  title: string;
-  bio: string;
-  location?: string;
-  timezone?: string;
-  availability?: string;
+  title: LocalizedText;
+  bio: LocalizedText;
+  location: string;
+  timezone: string;
+  availability: LocalizedText;
   projects: Project[];
   experience: Experience[];
   skills: Skill[];

@@ -13,8 +13,8 @@ export default function ContactPage() {
         availability={portfolioData.availability}
       />
       <Footer
-        location={portfolioData.location ?? "Maringá, BR"}
-        timezone={portfolioData.timezone ?? "America/Sao_Paulo"}
+        location={portfolioData.location}
+        timezone={portfolioData.timezone}
       />
     </>
   );

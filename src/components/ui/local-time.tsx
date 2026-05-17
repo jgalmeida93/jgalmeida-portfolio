@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 
 interface LocalTimeProps {
   timezone: string;
-  label?: string;
+  className?: string;
 }
 
-export function LocalTime({ timezone, label }: LocalTimeProps) {
+export function LocalTime({ timezone, className = "" }: LocalTimeProps) {
   const [time, setTime] = useState<string>("");
 
   useEffect(() => {
@@ -28,11 +28,9 @@ export function LocalTime({ timezone, label }: LocalTimeProps) {
   }, [timezone]);
 
   return (
-    <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--foreground-muted)]">
-      {label && <span>{label}</span>}
-      <span className="tabular-nums text-[var(--foreground)]">
-        {time || "—"}
-      </span>
+    <span className={`tabular-nums ${className}`}>
+      {time || "--:--:--"}
+      <span className="ml-1 animate-blink">_</span>
     </span>
   );
 }

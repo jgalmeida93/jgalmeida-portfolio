@@ -10,10 +10,10 @@ export default function ExperiencePage() {
     <>
       <div className="pt-32" />
       <ExperienceSection experience={portfolioData.experience} />
-      <AboutSection bio={portfolioData.bio} skills={portfolioData.skills} />
+      <AboutSection skills={portfolioData.skills} />
       <Footer
-        location={portfolioData.location ?? "Maringá, BR"}
-        timezone={portfolioData.timezone ?? "America/Sao_Paulo"}
+        location={portfolioData.location}
+        timezone={portfolioData.timezone}
       />
     </>
   );

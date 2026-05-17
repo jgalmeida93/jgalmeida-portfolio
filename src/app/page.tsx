@@ -7,46 +7,32 @@ import { AboutSection } from "@/components/sections/about-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { Marquee } from "@/components/ui/marquee";
 import { Footer } from "@/components/ui/footer";
+import { useApp } from "@/contexts/app-context";
 import { portfolioData } from "@/data/portfolio";
 
 export default function HomePage() {
-  const marqueeItems = [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Node.js",
-    "AWS",
-    "Tailwind",
-    "Design Systems",
-    "Performance",
-    "Accessibility",
-    "Editorial Web",
-  ];
+  const { L, t } = useApp();
 
   return (
     <>
       <HeroSection
-        name={portfolioData.name}
-        title={portfolioData.title}
-        bio={portfolioData.bio}
-        location={portfolioData.location ?? "Maringá, BR"}
-        timezone={portfolioData.timezone ?? "America/Sao_Paulo"}
-        availability={portfolioData.availability ?? "Available for select work"}
+        location={portfolioData.location}
+        timezone={portfolioData.timezone}
+        availability={L(portfolioData.availability)}
+        title={L(portfolioData.title)}
       />
-      <Marquee items={marqueeItems} />
+      <Marquee items={t.marquee.tags as unknown as string[]} variant="primary" />
       <ProjectsSection projects={portfolioData.projects} />
+      <Marquee items={t.marquee.tags as unknown as string[]} variant="ink" />
       <ExperienceSection experience={portfolioData.experience} />
-      <AboutSection
-        bio={portfolioData.bio}
-        skills={portfolioData.skills}
-      />
+      <AboutSection skills={portfolioData.skills} />
       <ContactSection
         contact={portfolioData.contact}
         availability={portfolioData.availability}
       />
       <Footer
-        location={portfolioData.location ?? "Maringá, BR"}
-        timezone={portfolioData.timezone ?? "America/Sao_Paulo"}
+        location={portfolioData.location}
+        timezone={portfolioData.timezone}
       />
     </>
   );

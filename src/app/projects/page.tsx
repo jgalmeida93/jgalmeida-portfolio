@@ -10,8 +10,8 @@ export default function ProjectsPage() {
       <div className="pt-32" />
       <ProjectsSection projects={portfolioData.projects} />
       <Footer
-        location={portfolioData.location ?? "Maringá, BR"}
-        timezone={portfolioData.timezone ?? "America/Sao_Paulo"}
+        location={portfolioData.location}
+        timezone={portfolioData.timezone}
       />
     </>
   );

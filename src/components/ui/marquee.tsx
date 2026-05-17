@@ -1,26 +1,31 @@
 interface MarqueeProps {
   items: string[];
-  separator?: string;
+  variant?: "primary" | "ink";
 }
 
-export function Marquee({ items, separator = "✦" }: MarqueeProps) {
+export function Marquee({ items, variant = "primary" }: MarqueeProps) {
   const seq = [...items, ...items, ...items];
 
+  const bg =
+    variant === "primary"
+      ? "bg-[var(--primary)] text-[var(--paper)]"
+      : "bg-[var(--ink)] text-[var(--bg)]";
+
   return (
-    <div className="relative overflow-hidden border-y border-[var(--border-subtle)] py-5">
-      <div className="animate-marquee flex w-max items-center gap-10 whitespace-nowrap">
+    <div className={`relative overflow-hidden ${bg}`}>
+      <div className="animate-marquee flex w-max items-center gap-12 whitespace-nowrap py-5 font-display text-3xl font-extrabold uppercase tracking-[0.04em] md:text-4xl">
         {seq.map((item, i) => (
-          <span
-            key={`${item}-${i}`}
-            className="font-serif text-3xl leading-none text-[var(--foreground)] md:text-5xl"
-          >
-            {item}
-            <span className="ml-10 text-[var(--accent)]/70">{separator}</span>
+          <span key={`${item}-${i}`} className="flex items-center gap-12">
+            <span>{item}</span>
+            <span
+              className="text-current opacity-80"
+              aria-hidden
+            >
+              ✸
+            </span>
           </span>
         ))}
       </div>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[var(--background)] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[var(--background)] to-transparent" />
     </div>
   );
 }

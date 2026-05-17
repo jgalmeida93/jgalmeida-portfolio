@@ -7,6 +7,9 @@ export interface Project {
   githubUrl?: string;
   imageUrl?: string;
   featured: boolean;
+  year?: string;
+  category?: string;
+  accent?: string;
 }
 
 export interface Experience {
@@ -36,6 +39,9 @@ export interface PortfolioData {
   name: string;
   title: string;
   bio: string;
+  location?: string;
+  timezone?: string;
+  availability?: string;
   projects: Project[];
   experience: Experience[];
   skills: Skill[];

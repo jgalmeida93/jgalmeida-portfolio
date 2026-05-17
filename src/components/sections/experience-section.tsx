@@ -1,63 +1,67 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import { Experience } from "@/types/portfolio";
+import { SectionLabel } from "@/components/ui/section-label";
 
 interface ExperienceSectionProps {
   experience: Experience[];
-  bio?: string;
-  name?: string;
-  title?: string;
 }
 
-interface ExperienceCardProps {
+interface ExperienceRowProps {
   experience: Experience;
   index: number;
+  isLast: boolean;
 }
 
-function ExperienceCard({ experience, index }: ExperienceCardProps) {
+function ExperienceRow({ experience, index, isLast }: ExperienceRowProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.6,
-        delay: index * 0.1,
+        delay: index * 0.05,
         ease: [0.22, 1, 0.36, 1],
       }}
-      viewport={{ once: true }}
-      className="relative"
+      viewport={{ once: true, margin: "-50px" }}
+      className={`group relative grid grid-cols-12 gap-6 py-10 md:gap-10 md:py-14 ${
+        !isLast ? "border-b border-[var(--border-subtle)]" : ""
+      }`}
     >
-      <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-8 hover:bg-zinc-900/70 transition-colors">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
-          <div className="flex-1">
-            <h3 className="text-2xl font-bold text-white mb-2">
-              {experience.position}
-            </h3>
-            <p className="text-xl text-blue-400 font-medium mb-1">
-              {experience.company}
-            </p>
-          </div>
-          <span className="text-sm text-zinc-400 bg-zinc-800/50 px-4 py-2 rounded-full border border-zinc-700 mt-4 md:mt-0 self-start">
-            {experience.duration}
+      <div className="col-span-12 md:col-span-3">
+        <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground-muted)]">
+          {experience.duration}
+        </div>
+      </div>
+
+      <div className="col-span-12 md:col-span-9">
+        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+          <h3 className="font-serif text-3xl leading-tight tracking-[-0.01em] text-[var(--foreground)] md:text-4xl">
+            {experience.company}
+          </h3>
+          <span className="font-serif text-xl italic text-[var(--accent)]">
+            {experience.position}
           </span>
         </div>
 
-        <div className="space-y-3 mb-8">
-          {experience.description.map((item, idx) => (
-            <div key={idx} className="flex items-start">
-              <div className="w-1.5 h-1.5 bg-zinc-500 rounded-full mt-2.5 mr-3 flex-shrink-0"></div>
-              <p className="text-zinc-300 leading-relaxed">{item}</p>
-            </div>
+        <ul className="mt-6 space-y-3">
+          {experience.description.map((item, i) => (
+            <li
+              key={i}
+              className="flex gap-4 text-[15px] leading-relaxed text-[var(--foreground-muted)]"
+            >
+              <span className="mt-2 inline-block h-px w-4 flex-shrink-0 bg-[var(--border)]" />
+              <span>{item}</span>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="mt-6 flex flex-wrap gap-2">
           {experience.technologies.map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1.5 text-sm font-medium bg-zinc-800/50 text-zinc-200 rounded-lg border border-zinc-700 hover:bg-zinc-700/50 transition-colors"
+              className="rounded-full border border-[var(--border)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--foreground-muted)]"
             >
               {tech}
             </span>
@@ -68,53 +72,46 @@ function ExperienceCard({ experience, index }: ExperienceCardProps) {
   );
 }
 
-export function ExperienceSection({
-  experience,
-  bio,
-  title,
-}: ExperienceSectionProps) {
+export function ExperienceSection({ experience }: ExperienceSectionProps) {
   return (
-    <motion.section
-      className="py-24 px-6 lg:px-8"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      viewport={{ once: true }}
+    <section
+      id="experience"
+      className="relative w-full px-6 py-24 lg:px-10 lg:py-32"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto w-full max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="mb-12 grid gap-8 md:grid-cols-12 md:mb-16"
         >
-          <div className="mb-6">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Experience
-            </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
-          </div>
-
-          {title && (
-            <h2 className="text-2xl md:text-3xl font-semibold text-white-400 mb-8">
-              {title}
+          <div className="md:col-span-5">
+            <SectionLabel number="02" title="Experience" />
+            <h2 className="mt-6 font-serif text-5xl leading-[0.95] tracking-[-0.01em] text-[var(--foreground)] md:text-7xl">
+              Where <em className="text-[var(--accent)]">I&apos;ve</em>
+              <br />
+              been.
             </h2>
-          )}
-
-          {bio && (
-            <p className="text-base md:text-lg text-zinc-400 leading-relaxed max-w-3xl mx-auto">
-              {bio}
-            </p>
-          )}
+          </div>
+          <p className="self-end font-serif text-lg italic leading-snug text-[var(--foreground-muted)] md:col-span-6 md:col-start-7 md:text-xl">
+            Six+ years between scaling teams, banking products, and a media
+            platform — picking up the pragmatic habits that don&apos;t make it
+            into job descriptions.
+          </p>
         </motion.div>
 
-        <div className="space-y-8">
-          {experience.map((exp, index) => (
-            <ExperienceCard key={exp.id} experience={exp} index={index} />
+        <div className="border-t border-[var(--border-subtle)]">
+          {experience.map((exp, i) => (
+            <ExperienceRow
+              key={exp.id}
+              experience={exp}
+              index={i}
+              isLast={i === experience.length - 1}
+            />
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

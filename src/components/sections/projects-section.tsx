@@ -1,143 +1,170 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  ArrowTopRightOnSquareIcon,
-  CodeBracketIcon,
-} from "@heroicons/react/24/outline";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Project } from "@/types/portfolio";
 import Image from "next/image";
+import { Project } from "@/types/portfolio";
+import { SectionLabel } from "@/components/ui/section-label";
 
 interface ProjectsSectionProps {
   projects: Project[];
 }
 
-interface ProjectCardProps {
+interface ProjectRowProps {
   project: Project;
   index: number;
 }
 
-function ProjectCard({ project, index }: ProjectCardProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: index * 0.2 }}
-      viewport={{ once: true }}
-    >
-      <Card variant="interactive" className="h-full">
-        <CardHeader>
-          {project.imageUrl && (
-            <Image
-              src={project.imageUrl}
-              alt={project.title}
-              width={600}
-              height={240}
-              className="w-full h-40 object-cover rounded-md mb-4"
-            />
-          )}
-          <CardTitle>{project.title}</CardTitle>
-          <CardDescription>{project.description}</CardDescription>
-        </CardHeader>
+function ProjectRow({ project, index }: ProjectRowProps) {
+  const num = String(index + 1).padStart(2, "0");
+  const accent = project.accent ?? "var(--accent)";
 
-        <CardContent>
-          <div className="flex flex-wrap gap-2 mb-6">
+  const content = (
+    <div className="grid grid-cols-12 items-stretch gap-6 py-10 md:gap-10 md:py-14">
+      <div className="col-span-12 flex flex-col justify-between md:col-span-5">
+        <div>
+          <div className="flex items-center gap-4">
+            <span className="font-mono text-xs text-[var(--foreground-subtle)]">
+              {num} —
+            </span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground-muted)]">
+              {project.category}
+            </span>
+          </div>
+          <h3
+            className="mt-5 font-serif text-5xl leading-[0.95] tracking-[-0.01em] text-[var(--foreground)] transition-colors duration-300 group-hover:text-[var(--accent)] md:text-6xl"
+            style={{ ["--accent" as string]: accent }}
+          >
+            {project.title}
+          </h3>
+          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-[var(--foreground-muted)]">
+            {project.description}
+          </p>
+        </div>
+
+        <div className="mt-8 flex flex-col gap-5">
+          <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="px-3 py-1 text-xs font-medium bg-zinc-800 text-zinc-300 rounded-full"
+                className="rounded-full border border-[var(--border)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--foreground-muted)]"
               >
                 {tech}
               </span>
             ))}
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex items-center gap-5 font-mono text-[11px] uppercase tracking-[0.22em]">
+            <span className="text-[var(--foreground-subtle)]">
+              © {project.year}
+            </span>
             {project.demoUrl && (
-              <Button size="sm" variant="outline" asChild>
-                <a
-                  href={project.demoUrl}
-                  target="_blank"
-                  className="flex items-center"
-                  rel="noopener noreferrer"
-                >
-                  <ArrowTopRightOnSquareIcon className="h-4 w-4 mr-2" />
-                  Demo
-                </a>
-              </Button>
-            )}
-
-            {project.githubUrl && (
-              <Button size="sm" variant="ghost" asChild>
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <CodeBracketIcon className="h-4 w-4 mr-2" />
-                  Code
-                </a>
-              </Button>
+              <span className="inline-flex items-center gap-2 text-[var(--foreground)] transition-colors group-hover:text-[var(--accent)]">
+                Visit live
+                <span className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  ↗
+                </span>
+              </span>
             )}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
+
+      <div className="col-span-12 md:col-span-7">
+        <div
+          className="relative aspect-[16/10] w-full overflow-hidden rounded-md border border-[var(--border)] bg-[var(--background-elev)] transition-all duration-500 group-hover:border-[var(--accent)]/40"
+          style={{ ["--accent" as string]: accent }}
+        >
+          {project.imageUrl ? (
+            <Image
+              src={project.imageUrl}
+              alt={project.title}
+              fill
+              sizes="(min-width: 1024px) 60vw, 100vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            />
+          ) : (
+            <div
+              className="absolute inset-0 flex items-center justify-center"
+              style={{
+                background: `radial-gradient(60% 60% at 50% 40%, ${accent}1f, transparent 70%), linear-gradient(135deg, ${accent}0a, transparent 70%)`,
+              }}
+            >
+              <span
+                className="font-serif text-9xl italic leading-none opacity-30"
+                style={{ color: accent }}
+              >
+                {project.title.charAt(0)}
+              </span>
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--foreground-muted)]">
+                <span>Live preview</span>
+                <span>{new URL(project.demoUrl ?? "https://x").host}</span>
+              </div>
+            </div>
+          )}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--background)]/40 via-transparent to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-30" />
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: "-80px" }}
+      className="border-t border-[var(--border-subtle)]"
+    >
+      {project.demoUrl ? (
+        <a
+          href={project.demoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block"
+        >
+          {content}
+        </a>
+      ) : (
+        <div className="group">{content}</div>
+      )}
     </motion.div>
   );
 }
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
-  const featuredProjects = projects.filter((project) => project.featured);
+  const featured = projects.filter((p) => p.featured);
 
   return (
-    <section className="py-24 px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+    <section id="work" className="relative w-full px-6 py-24 lg:px-10 lg:py-32">
+      <div className="mx-auto w-full max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="mb-12 grid gap-8 md:grid-cols-12 md:mb-16"
         >
-          <div className="mb-6">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Projects
-            </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+          <div className="md:col-span-5">
+            <SectionLabel number="01" title="Selected Work" />
+            <h2 className="mt-6 font-serif text-5xl leading-[0.95] tracking-[-0.01em] text-[var(--foreground)] md:text-7xl">
+              Things <em className="text-[var(--accent)]">I&apos;ve</em>
+              <br />
+              made.
+            </h2>
           </div>
-          <p className="text-base md:text-lg text-zinc-400 leading-relaxed max-w-3xl mx-auto">
-            A selection of projects that showcase my skills and passion for
-            creating exceptional digital experiences.
+          <p className="self-end font-serif text-lg italic leading-snug text-[var(--foreground-muted)] md:col-span-6 md:col-start-7 md:text-xl">
+            A short list of recent projects — from a Portuguese literary
+            publication to a microlearning tool for German grammar. Different
+            shapes, same care.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+        <div>
+          {featured.map((project, i) => (
+            <ProjectRow key={project.id} project={project} index={i} />
           ))}
+          <div className="border-t border-[var(--border-subtle)]" />
         </div>
-
-        {projects.length > featuredProjects.length && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <Button variant="outline" size="lg">
-              View All Projects
-            </Button>
-          </motion.div>
-        )}
       </div>
     </section>
   );

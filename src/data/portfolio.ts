@@ -19,6 +19,29 @@ export const portfolioData: PortfolioData = {
 
   projects: [
     {
+      id: "crivocv",
+      title: "crivocv",
+      description: {
+        en: "Resumes tailored per job with AI. Paste the description and get bullets rewritten as nouns of action with metrics, plus an ATS-friendly PDF — in the job's own language.",
+        pt: "Currículos adaptados por vaga com IA. Cola a descrição da vaga e recebe bullets reescritos com substantivos de ação e métricas, mais um PDF ATS-friendly — no idioma da vaga.",
+      },
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Drizzle",
+        "PostgreSQL",
+        "Better Auth",
+        "Stripe",
+        "Anthropic",
+        "Tailwind",
+      ],
+      demoUrl: "https://crivocv.com/",
+      featured: true,
+      year: "2026",
+      category: { en: "Career SaaS", pt: "SaaS de Carreira" },
+      accent: "#0c2a26",
+    },
+    {
       id: "penumbria",
       title: "Penumbria",
       description: {

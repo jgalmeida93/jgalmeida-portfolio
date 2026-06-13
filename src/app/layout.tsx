@@ -39,9 +39,12 @@ export const metadata: Metadata = {
   description:
     "Portfolio of Jonas G. Almeida, senior software engineer based in Maringá, PR. Selected work in product engineering, editorial web, language tools and small products built to last.",
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "48x48" },
+    ],
     shortcut: "/favicon.ico",
-    apple: "/favicon.svg",
+    apple: "/apple-touch-icon.png",
   },
 };
 

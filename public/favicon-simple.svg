@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <g transform="rotate(-3 16 16)">
-    <rect x="5" y="6" width="22" height="22" rx="3" fill="#16110d"/>
-    <rect x="3" y="4" width="22" height="22" rx="3" fill="#d94545" stroke="#16110d" stroke-width="1.4"/>
-    <text x="14" y="20" text-anchor="middle" font-family="Arial Black, Helvetica, sans-serif" font-weight="900" font-size="14" fill="#f4ead5" letter-spacing="-1">JG</text>
-  </g>
-</svg>

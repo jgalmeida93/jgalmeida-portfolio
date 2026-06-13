@@ -1,28 +1,26 @@
 interface MarqueeProps {
   items: string[];
-  variant?: "primary" | "ink";
 }
 
-export function Marquee({ items, variant = "primary" }: MarqueeProps) {
-  const seq = [...items, ...items, ...items];
-
-  const bg =
-    variant === "primary"
-      ? "bg-[var(--primary)] text-[var(--paper)]"
-      : "bg-[var(--ink)] text-[var(--bg)]";
+/**
+ * Slow, low-contrast "credits" strip — serif italic words drifting
+ * between hairlines. One quiet gesture, not a shouting banner.
+ */
+export function Marquee({ items }: MarqueeProps) {
+  const seq = [...items, ...items];
 
   return (
-    <div className={`relative overflow-hidden ${bg}`}>
-      <div className="animate-marquee flex w-max items-center gap-12 whitespace-nowrap py-5 font-display text-3xl font-extrabold uppercase tracking-[0.04em] md:text-4xl">
+    <div
+      className="relative overflow-hidden border-y border-[var(--rule)] py-6"
+      aria-hidden="true"
+    >
+      <div className="animate-marquee flex w-max items-center gap-10 whitespace-nowrap">
         {seq.map((item, i) => (
-          <span key={`${item}-${i}`} className="flex items-center gap-12">
-            <span>{item}</span>
-            <span
-              className="text-current opacity-80"
-              aria-hidden
-            >
-              ✸
+          <span key={`${item}-${i}`} className="flex items-center gap-10">
+            <span className="font-display text-2xl font-light text-[var(--ink-soft)] md:text-3xl">
+              {item}
             </span>
+            <span className="text-[var(--accent)]">&#10022;</span>
           </span>
         ))}
       </div>

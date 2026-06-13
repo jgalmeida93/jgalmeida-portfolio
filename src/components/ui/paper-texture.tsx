@@ -1,3 +1,3 @@
 export function PaperTexture() {
-  return <div className="paper-grain" aria-hidden="true" />;
+  return <div className="grain" aria-hidden="true" />;
 }

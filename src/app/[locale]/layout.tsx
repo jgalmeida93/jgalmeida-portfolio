@@ -1,9 +1,12 @@
 import { notFound } from "next/navigation";
 import { AppProvider } from "@/contexts/app-context";
 import { Navigation } from "@/components/ui/navigation";
+import { CommandMenu } from "@/components/ui/command-menu";
+import { Footer } from "@/components/ui/footer";
 import { PaperTexture } from "@/components/ui/paper-texture";
 import { Analytics } from "@vercel/analytics/next";
 import { PersonJsonLd, WebsiteJsonLd } from "@/components/seo/person-jsonld";
+import { portfolioData } from "@/data/portfolio";
 import type { Locale } from "@/types/portfolio";
 
 export function generateStaticParams() {
@@ -29,7 +32,12 @@ export default async function LocaleLayout({
       <SetHtmlLang locale={locale} />
       <PaperTexture />
       <Navigation />
-      <main className="relative z-10">{children}</main>
+      <CommandMenu />
+      <main className="relative z-10 flex-1 pt-16">{children}</main>
+      <Footer
+        location={portfolioData.location}
+        timezone={portfolioData.timezone}
+      />
       <Analytics />
     </AppProvider>
   );

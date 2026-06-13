@@ -17,49 +17,50 @@ export function Footer({ location, timezone }: FooterProps) {
   });
 
   return (
-    <footer className="relative w-full border-t-4 border-double border-[var(--rule)] bg-[var(--bg-elev)]">
-      <div className="mx-auto w-full max-w-[1400px] px-5 py-10 md:px-8">
-        <div className="grid gap-8 md:grid-cols-12 md:gap-10">
-          <div className="md:col-span-5">
-            <div className="font-display text-3xl font-extrabold uppercase tracking-[0.02em] text-[var(--ink)]">
-              Colophon
+    <footer className="relative w-full border-t border-[var(--rule)] bg-[var(--bg-elev)]">
+      <div className="mx-auto w-full max-w-[1320px] px-5 py-16 md:px-10 md:py-20">
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-6">
+            <div className="font-display text-3xl font-light text-[var(--ink)]">
+              Jonas&nbsp;Almeida<span className="text-[var(--accent)]">.</span>
             </div>
-            <p className="mt-3 max-w-sm font-serif text-base italic leading-snug text-[var(--ink-muted)]">
-              {t.footer.colophon}. {t.footer.stack}.
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-[var(--ink-muted)]">
+              {t.footer.signature}
             </p>
           </div>
 
-          <div className="md:col-span-4">
-            <div className="mono text-[var(--ink-muted)]">
+          <div className="md:col-span-3">
+            <div className="eyebrow text-[10px] text-[var(--ink-faint)]">
               {t.footer.lastUpdate}
             </div>
-            <div className="mt-1 font-display text-xl font-bold uppercase text-[var(--ink)]">
+            <div className="mt-2 font-display text-lg text-[var(--ink-soft)]">
               {updated}
             </div>
-            <div className="mt-3 mono text-[var(--ink-muted)]">
-              {location} —{" "}
-              <LocalTime
-                timezone={timezone}
-                className="text-[var(--ink)]"
-              />
+            <div className="mt-1 eyebrow text-[10px] text-[var(--ink-muted)]">
+              {location} ·{" "}
+              <LocalTime timezone={timezone} className="text-[var(--ink-soft)]" />
             </div>
           </div>
 
           <div className="md:col-span-3 md:text-right">
-            <div className="mono text-[var(--ink-muted)]">№</div>
-            <div className="mt-1 font-display text-2xl font-extrabold uppercase tracking-[0.04em] text-[var(--primary)]">
-              26 / {year}
-            </div>
-            <div className="mt-3 mono text-[var(--ink-faint)]">
-              © {year} Jonas G. Almeida
-            </div>
+            <a
+              href="#"
+              className="group inline-flex items-center gap-2 eyebrow text-[10px] text-[var(--ink-muted)] transition-colors hover:text-[var(--accent)]"
+            >
+              <span className="link-underline">Back to top</span>
+              <span className="transition-transform group-hover:-translate-y-0.5">
+                &#8593;
+              </span>
+            </a>
           </div>
         </div>
 
-        <div className="mt-10 flex items-center gap-3 border-t border-dashed border-[var(--rule)] pt-6">
-          <span className="inline-block h-3 w-3 rotate-45 bg-[var(--primary)]" />
-          <span className="mono text-[var(--ink-muted)]">
-            Made in Brazil — with espresso, headphones &amp; too many tabs.
+        <div className="mt-14 flex flex-col gap-3 border-t border-[var(--rule)] pt-6 md:flex-row md:items-center md:justify-between">
+          <span className="eyebrow text-[10px] text-[var(--ink-faint)]">
+            &copy; {year} Jonas G. Almeida
+          </span>
+          <span className="eyebrow text-[10px] text-[var(--ink-faint)]">
+            {t.footer.builtWith}
           </span>
         </div>
       </div>

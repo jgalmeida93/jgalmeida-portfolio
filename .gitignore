@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local CV source artifact
+Jonas_Almeida_CV_EN_Corrected.pdf

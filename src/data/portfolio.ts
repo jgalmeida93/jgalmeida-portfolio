@@ -81,7 +81,6 @@ export const portfolioData: PortfolioData = {
       featured: true,
       year: "2025",
       category: { en: "Learning Tools", pt: "Ferramentas de Estudo" },
-      imageUrl: "/neurodecks.png",
       accent: "#5C2E91",
     },
     {
@@ -96,7 +95,6 @@ export const portfolioData: PortfolioData = {
       featured: true,
       year: "2024",
       category: { en: "Productivity", pt: "Produtividade" },
-      imageUrl: "/timesheet.png",
       accent: "#2E5C3E",
     },
     {
@@ -111,7 +109,6 @@ export const portfolioData: PortfolioData = {
       featured: true,
       year: "2023",
       category: { en: "Editorial Platform", pt: "Plataforma Editorial" },
-      imageUrl: "/codebrews.png",
       accent: "#1F5C8A",
     },
   ],
@@ -149,8 +146,8 @@ export const portfolioData: PortfolioData = {
       company: "CodeBrew Labs",
       position: { en: "Frontend Developer", pt: "Desenvolvedor Frontend" },
       duration: {
-        en: "Sep 2022 — Mar 2025",
-        pt: "Set 2022 — Mar 2025",
+        en: "Mar 2023 — Mar 2025",
+        pt: "Mar 2023 — Mar 2025",
       },
       description: [
         {

@@ -1,11 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Project } from "@/types/portfolio";
 import { useApp } from "@/contexts/app-context";
 import { SectionMarker } from "@/components/ui/section-marker";
-import { Ticket } from "@/components/ui/ticket";
 
 interface ProjectsSectionProps {
   projects: Project[];
@@ -16,142 +14,98 @@ interface CatalogEntryProps {
   index: number;
 }
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
+function ProjectVisual({ project, num }: { project: Project; num: string }) {
+  const accent = project.accent ?? "var(--accent)";
+
+  return (
+    <div
+      className="absolute inset-0 flex flex-col justify-between p-8"
+      style={{
+        background: `radial-gradient(120% 120% at 80% 0%, ${accent}33, transparent 55%), var(--bg-elev)`,
+      }}
+    >
+      <div className="flex items-start justify-between">
+        <span className="eyebrow text-[var(--ink-muted)]">{num}</span>
+        <span className="eyebrow text-[var(--ink-faint)]">
+          {project.demoUrl ? new URL(project.demoUrl).host : "preview"}
+        </span>
+      </div>
+      <div
+        className="font-display text-[clamp(7rem,18vw,15rem)] font-light leading-[0.8] text-[var(--ink)]"
+        style={{ opacity: 0.07 }}
+      >
+        {project.title.charAt(0)}
+      </div>
+    </div>
+  );
+}
+
 function CatalogEntry({ project, index }: CatalogEntryProps) {
   const { L, t } = useApp();
   const num = String(index + 1).padStart(2, "0");
-  const accent = project.accent ?? "var(--primary)";
   const alignLeft = index % 2 === 0;
 
   const content = (
-    <div className="grid grid-cols-12 items-stretch gap-6 py-10 md:gap-10 md:py-16">
+    <div className="grid grid-cols-12 items-center gap-8 py-14 md:gap-14 md:py-20">
+      {/* Text */}
       <div
-        className={`order-2 col-span-12 flex flex-col justify-between md:col-span-5 ${
+        className={`order-2 col-span-12 md:col-span-5 ${
           alignLeft ? "md:order-1" : "md:order-2"
         }`}
       >
-        <div>
-          <div className="flex items-center gap-4">
-            <span
-              className="font-display text-7xl font-extrabold leading-none"
-              style={{ color: accent }}
-            >
-              №{num}
-            </span>
-            <div className="flex flex-col">
-              <span className="mono text-[var(--ink-muted)]">
-                {t.work.entry}
-              </span>
-              <span className="mono text-[var(--ink)]">
-                {L(project.category)}
-              </span>
-            </div>
-          </div>
-
-          <h3 className="mt-7 font-display text-5xl font-extrabold uppercase leading-[0.92] tracking-[-0.005em] text-[var(--ink)] transition-colors duration-300 group-hover:text-[var(--primary)] md:text-6xl">
-            {project.title}
-          </h3>
-
-          <p className="mt-5 max-w-md font-serif text-lg leading-snug text-[var(--ink-soft)] md:text-xl">
-            {L(project.description)}
-          </p>
+        <div className="flex items-center gap-4">
+          <span className="font-display text-2xl font-light text-[var(--accent)]">
+            {num}
+          </span>
+          <span className="h-px w-8 bg-[var(--rule-strong)]" />
+          <span className="eyebrow text-[var(--ink-muted)]">
+            {L(project.category)} &middot; {project.year}
+          </span>
         </div>
 
-        <div className="mt-8 flex flex-col gap-5">
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-sm border border-[var(--rule)] bg-[var(--bg-elev)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--ink-muted)]"
-              >
+        <h3 className="mt-6 font-display text-[clamp(2.6rem,6vw,4.5rem)] font-light leading-[0.98] text-[var(--ink)] transition-colors duration-300 group-hover:text-[var(--accent)]">
+          {project.title}
+        </h3>
+
+        <p className="mt-5 max-w-md text-[15px] leading-relaxed text-[var(--ink-soft)]">
+          {L(project.description)}
+        </p>
+
+        <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-1.5">
+          {project.technologies.map((tech, i) => (
+            <span key={tech} className="flex items-center gap-3">
+              {i > 0 && <span className="text-[var(--ink-faint)]">&middot;</span>}
+              <span className="eyebrow text-[10px] text-[var(--ink-muted)]">
                 {tech}
               </span>
-            ))}
-          </div>
+            </span>
+          ))}
+        </div>
 
-          <div className="flex items-center justify-between gap-4">
-            <Ticket>{project.year}</Ticket>
-            {project.demoUrl ? (
-              <span className="inline-flex items-center gap-2 font-display text-xl font-bold uppercase text-[var(--ink)] transition-colors group-hover:text-[var(--primary)]">
-                {t.work.visit}
-                <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">
-                  ↗
-                </span>
+        <div className="mt-8">
+          {project.demoUrl ? (
+            <span className="group/link inline-flex items-center gap-2.5 eyebrow text-[var(--ink)]">
+              <span className="link-underline">{t.work.visit}</span>
+              <span className="text-[var(--accent)] transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">
+                &#8599;
               </span>
-            ) : (
-              <span className="mono text-[var(--ink-faint)]">
-                {t.work.noLink}
-              </span>
-            )}
-          </div>
+            </span>
+          ) : (
+            <span className="eyebrow text-[var(--ink-faint)]">{t.work.noLink}</span>
+          )}
         </div>
       </div>
 
+      {/* Visual */}
       <div
         className={`order-1 col-span-12 md:col-span-7 ${
           alignLeft ? "md:order-2" : "md:order-1"
         }`}
       >
-        <div
-          className="card-lift relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-[var(--rule)] bg-[var(--bg-elev)] shadow-[var(--shadow-paper)]"
-          style={{ borderColor: `${accent}55` }}
-        >
-          {project.imageUrl ? (
-            <Image
-              src={project.imageUrl}
-              alt={`${project.title} — ${L(project.category)} project preview`}
-              fill
-              sizes="(min-width: 1024px) 58vw, 100vw"
-              priority={index === 0}
-              loading={index === 0 ? "eager" : "lazy"}
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-            />
-          ) : (
-            <div
-              className="absolute inset-0 flex items-end justify-start p-8"
-              style={{
-                background: `repeating-linear-gradient(135deg, ${accent}20, ${accent}20 12px, transparent 12px, transparent 24px), linear-gradient(160deg, ${accent}25, transparent 70%)`,
-              }}
-            >
-              <div className="flex h-full w-full flex-col items-start justify-between">
-                <div className="flex w-full items-start justify-between">
-                  <span
-                    className="font-display text-2xl font-extrabold uppercase"
-                    style={{ color: accent }}
-                  >
-                    {project.title}
-                  </span>
-                  <span
-                    className="rotate-3 rounded-sm border-2 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em]"
-                    style={{ color: accent, borderColor: accent }}
-                  >
-                    Live
-                  </span>
-                </div>
-                <div
-                  className="font-display text-[clamp(6rem,18vw,14rem)] font-extrabold uppercase leading-[0.85]"
-                  style={{ color: accent, opacity: 0.18 }}
-                >
-                  {project.title.charAt(0)}
-                </div>
-                <div className="flex w-full items-end justify-between">
-                  <span
-                    className="font-mono text-xs uppercase tracking-[0.2em]"
-                    style={{ color: accent }}
-                  >
-                    {project.demoUrl
-                      ? new URL(project.demoUrl).host
-                      : "preview"}
-                  </span>
-                  <span
-                    className="font-mono text-xs"
-                    style={{ color: accent }}
-                  >
-                    №{num}
-                  </span>
-                </div>
-              </div>
-            </div>
-          )}
+        <div className="lift relative aspect-[16/10] w-full overflow-hidden border border-[var(--rule)] bg-[var(--bg-elev)] group-hover:border-[var(--rule-strong)] group-hover:shadow-[var(--shadow-soft)]">
+          <ProjectVisual project={project} num={num} />
         </div>
       </div>
     </div>
@@ -159,11 +113,11 @@ function CatalogEntry({ project, index }: CatalogEntryProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 36 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      viewport={{ once: true, margin: "-80px" }}
-      className="border-t-2 border-dashed border-[var(--rule)]"
+      transition={{ duration: 0.9, ease }}
+      viewport={{ once: true, margin: "-100px" }}
+      className="border-t border-[var(--rule)]"
     >
       {project.demoUrl ? (
         <a
@@ -186,37 +140,33 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   const featured = projects.filter((p) => p.featured);
 
   return (
-    <section
-      id="work"
-      className="relative w-full px-5 py-20 md:px-8 md:py-28"
-    >
-      <div className="mx-auto w-full max-w-[1400px]">
+    <section id="work" className="relative w-full px-5 py-24 md:px-10 md:py-36">
+      <div className="mx-auto w-full max-w-[1320px]">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8, ease }}
           viewport={{ once: true }}
-          className="mb-12 grid gap-8 md:grid-cols-12 md:mb-20"
+          className="grid gap-8 md:grid-cols-12 md:items-end"
         >
-          <div className="md:col-span-6">
-            <SectionMarker label={t.work.tag} />
-            <h2 className="mt-6 font-display text-[clamp(3rem,9vw,9rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.005em] text-[var(--ink)]">
+          <div className="md:col-span-7">
+            <SectionMarker index="01" label={t.work.tag} />
+            <h2 className="mt-7 font-display text-[clamp(2.8rem,8vw,7rem)] font-light leading-[0.94] text-[var(--ink)]">
               {t.work.heading}{" "}
-              <span className="italic font-serif font-normal lowercase tracking-[-0.01em] text-[var(--primary)]">
+              <span className="text-[var(--accent)]">
                 {t.work.headingEm}
               </span>
             </h2>
           </div>
-          <p className="self-end font-serif text-lg leading-snug text-[var(--ink-muted)] md:col-span-5 md:col-start-8 md:text-xl">
+          <p className="text-[15px] leading-relaxed text-[var(--ink-muted)] md:col-span-4 md:col-start-9">
             {t.work.subhead}
           </p>
         </motion.div>
 
-        <div>
+        <div className="mt-12 border-b border-[var(--rule)] md:mt-16">
           {featured.map((project, i) => (
             <CatalogEntry key={project.id} project={project} index={i} />
           ))}
-          <div className="border-t-2 border-dashed border-[var(--rule)]" />
         </div>
       </div>
     </section>

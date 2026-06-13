@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 
 const SUPPORTED = ["en", "pt"] as const;
 
-// Old single-locale paths that should now redirect to the localized home + anchor
-const LEGACY_ANCHORS: Record<string, string> = {
-  "/projects": "#work",
-  "/projects/": "#work",
-  "/experience": "#experience",
-  "/experience/": "#experience",
-  "/contact": "#contact",
-  "/contact/": "#contact",
+// Old single-locale paths that should now redirect to the localized section route
+const LEGACY_ROUTES: Record<string, string> = {
+  "/projects": "/work",
+  "/projects/": "/work",
+  "/experience": "/experience",
+  "/experience/": "/experience",
+  "/contact": "/contact",
+  "/contact/": "/contact",
 };
 
 function detectLocale(req: NextRequest): "en" | "pt" {
@@ -20,10 +20,10 @@ function detectLocale(req: NextRequest): "en" | "pt" {
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // 1) Legacy single-locale paths → localized home + anchor
-  if (pathname in LEGACY_ANCHORS) {
+  // 1) Legacy single-locale paths → localized section route
+  if (pathname in LEGACY_ROUTES) {
     const locale = detectLocale(req);
-    const url = new URL(`/${locale}${LEGACY_ANCHORS[pathname]}`, req.url);
+    const url = new URL(`/${locale}${LEGACY_ROUTES[pathname]}`, req.url);
     return NextResponse.redirect(url, 308);
   }
 

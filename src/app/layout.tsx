@@ -1,40 +1,32 @@
 import type { Metadata } from "next";
-import {
-  Big_Shoulders,
-  Fraunces,
-  Inter,
-  Space_Mono,
-} from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 
-const bigShoulders = Big_Shoulders({
+// Bricolage Grotesque — modern display grotesque; the headline voice.
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
-  variable: "--font-big-shoulders",
-  display: "swap",
-  adjustFontFallback: false,
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-fraunces",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-bricolage",
   display: "swap",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-space-mono",
+// Satoshi — geometric grotesque for body and UI (bundled in /public/fonts).
+const satoshi = localFont({
+  src: [
+    {
+      path: "../../public/fonts/satoshi/WEB/fonts/Satoshi-Variable.woff2",
+      weight: "300 900",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/satoshi/WEB/fonts/Satoshi-VariableItalic.woff2",
+      weight: "300 900",
+      style: "italic",
+    },
+  ],
+  variable: "--font-satoshi",
   display: "swap",
 });
 
@@ -45,7 +37,7 @@ export const metadata: Metadata = {
     template: `%s · ${SITE_NAME}`,
   },
   description:
-    "Portfolio of Jonas G. Almeida, senior software engineer based in Maringá, PR. A catalog of selected work in editorial web, language tools and indie products.",
+    "Portfolio of Jonas G. Almeida, senior software engineer based in Maringá, PR. Selected work in product engineering, editorial web, language tools and small products built to last.",
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     shortcut: "/favicon.ico",
@@ -73,13 +65,17 @@ export default function RootLayout({
 }) {
   return (
     <html
+      lang="en"
       data-theme="dark"
-      className={`${bigShoulders.variable} ${fraunces.variable} ${inter.variable} ${spaceMono.variable}`}
+      suppressHydrationWarning
+      className={`${bricolage.variable} ${satoshi.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
       </head>
-      <body className="min-h-screen overflow-x-hidden">{children}</body>
+      <body className="flex min-h-screen flex-col overflow-x-hidden">
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,14 +1,19 @@
 interface SectionMarkerProps {
   label: string;
+  index?: string;
 }
 
-export function SectionMarker({ label }: SectionMarkerProps) {
+export function SectionMarker({ label, index }: SectionMarkerProps) {
   return (
-    <div className="flex items-center gap-3">
-      <span className="inline-block h-2 w-2 rotate-45 bg-[var(--primary)]" />
-      <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--ink-muted)]">
-        {label}
-      </span>
+    <div className="flex items-center gap-4">
+      {index && (
+        <span className="eyebrow text-[var(--accent)]">{index}</span>
+      )}
+      <span
+        aria-hidden
+        className="h-px w-10 bg-[var(--rule-strong)]"
+      />
+      <span className="eyebrow text-[var(--ink-muted)]">{label}</span>
     </div>
   );
 }

@@ -28,9 +28,9 @@ export function LocalTime({ timezone, className = "" }: LocalTimeProps) {
   }, [timezone]);
 
   return (
-    <span className={`tabular-nums ${className}`}>
+    <span className={`tnum ${className}`}>
       {time || "--:--:--"}
-      <span className="ml-1 animate-blink">_</span>
+      <span className="ml-0.5 animate-blink text-[var(--accent)]">_</span>
     </span>
   );
 }

@@ -1,7 +1,6 @@
 import { ImageResponse } from "next/og";
 import { dictionary } from "@/lib/i18n";
 import { portfolioData } from "@/data/portfolio";
-import { SITE_NAME } from "@/lib/site";
 import type { Locale } from "@/types/portfolio";
 
 export const runtime = "edge";
@@ -21,21 +20,25 @@ export default async function OpenGraphImage({
   const locale: Locale = isValidLocale(raw) ? raw : "en";
   const t = dictionary[locale];
 
-  const [fraunces, bigShoulders, spaceMono] = await Promise.all([
+  const [bricolageLight, bricolageSemi, manrope] = await Promise.all([
     loadGoogleFont(
-      "https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,500&display=swap"
+      "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300&display=swap"
     ),
     loadGoogleFont(
-      "https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@900&display=swap"
+      "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600&display=swap"
     ),
     loadGoogleFont(
-      "https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
+      "https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap"
     ),
   ]);
 
-  const issueLabel = locale === "pt" ? "EDIÇÃO" : "ISSUE";
-  const portfolioLabel = locale === "pt" ? "PORTFÓLIO" : "PORTFOLIO";
-  const lastName = SITE_NAME.replace("Jonas G. ", "").toUpperCase();
+  const portfolioLabel = locale === "pt" ? "PORTFÓLIO — 2026" : "PORTFOLIO — 2026";
+  const eyebrow = {
+    fontFamily: "Manrope",
+    fontSize: 19,
+    letterSpacing: "0.3em",
+    textTransform: "uppercase" as const,
+  };
 
   return new ImageResponse(
     (
@@ -45,189 +48,103 @@ export default async function OpenGraphImage({
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          background: "#16110d",
-          padding: 64,
-          fontFamily: "BigShoulders",
-          color: "#f4ead5",
+          justifyContent: "space-between",
+          background: "#0c0c11",
+          padding: 72,
+          fontFamily: "Bricolage",
+          color: "#f3f2ee",
+          position: "relative",
         }}
       >
+        {/* Ambient accent glow */}
+        <div
+          style={{
+            position: "absolute",
+            top: -220,
+            right: -160,
+            width: 720,
+            height: 720,
+            background:
+              "radial-gradient(circle, rgba(189,147,249,0.22), transparent 70%)",
+          }}
+        />
+
+        {/* Top row */}
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            paddingBottom: 14,
-            borderBottom: "1px solid #3a2e22",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              fontFamily: "SpaceMono",
-              fontSize: 20,
-              letterSpacing: "0.22em",
-              color: "#998771",
-              gap: 16,
-            }}
-          >
-            <span>VOL. 01</span>
-            <span style={{ color: "#5a4a3a" }}>/</span>
-            <span>{`${issueLabel} № 26`}</span>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              fontFamily: "SpaceMono",
-              fontSize: 20,
-              letterSpacing: "0.22em",
-              color: "#998771",
-            }}
-          >
-            MARINGÁ — PR
-          </div>
+          <div style={{ ...eyebrow, color: "#bd93f9" }}>{portfolioLabel}</div>
+          <div style={{ ...eyebrow, color: "#8b88a0" }}>MARINGÁ — BR</div>
         </div>
 
-        <div
-          style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            marginTop: 24,
-          }}
-        >
+        {/* Name */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              gap: 24,
-              marginBottom: 32,
-            }}
-          >
-            <div
-              style={{
-                width: 100,
-                height: 100,
-                background: "#d94545",
-                color: "#f4ead5",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                borderRadius: 12,
-                fontSize: 60,
-                fontFamily: "BigShoulders",
-                fontWeight: 900,
-                transform: "rotate(-3deg)",
-                boxShadow: "6px 6px 0 #ecb736",
-              }}
-            >
-              JG
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 6,
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  fontFamily: "SpaceMono",
-                  fontSize: 20,
-                  letterSpacing: "0.22em",
-                  color: "#ecb736",
-                }}
-              >
-                {portfolioLabel}
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  fontFamily: "SpaceMono",
-                  fontSize: 14,
-                  letterSpacing: "0.22em",
-                  color: "#998771",
-                }}
-              >
-                EST. 2018
-              </div>
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              fontFamily: "BigShoulders",
-              fontWeight: 900,
-              fontSize: 150,
-              lineHeight: 0.92,
+              fontSize: 168,
+              fontWeight: 300,
+              lineHeight: 0.9,
               letterSpacing: "-0.02em",
-              color: "#f4ead5",
             }}
           >
-            JONAS GABRIEL
+            Jonas
           </div>
           <div
             style={{
               display: "flex",
-              fontFamily: "Fraunces",
-              fontStyle: "italic",
-              fontWeight: 500,
-              color: "#d94545",
-              fontSize: 150,
-              lineHeight: 0.92,
+              alignItems: "baseline",
+              fontSize: 168,
+              lineHeight: 0.9,
             }}
           >
-            almeida.
+            <span style={{ fontWeight: 600 }}>Almeida</span>
+            <span style={{ color: "#bd93f9", fontWeight: 300 }}>.</span>
           </div>
-
           <div
             style={{
               display: "flex",
-              marginTop: 28,
-              fontFamily: "Fraunces",
-              fontStyle: "italic",
-              fontSize: 32,
-              color: "#d9c8a6",
-              maxWidth: 920,
-              lineHeight: 1.25,
+              marginTop: 30,
+              fontWeight: 300,
+              fontSize: 36,
+              color: "#c6c3d0",
+              maxWidth: 880,
             }}
           >
             {t.hero.tagline}
           </div>
         </div>
 
+        {/* Bottom row */}
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-end",
-            paddingTop: 16,
-            borderTop: "1px solid #3a2e22",
+            paddingTop: 22,
+            borderTop: "1px solid rgba(243,242,238,0.14)",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              fontFamily: "SpaceMono",
-              fontSize: 20,
-              letterSpacing: "0.22em",
-              color: "#f4ead5",
-            }}
-          >
+          <div style={{ ...eyebrow, color: "#f3f2ee" }}>
             {portfolioData.title[locale].toUpperCase()}
           </div>
           <div
             style={{
               display: "flex",
-              fontFamily: "SpaceMono",
-              fontSize: 20,
-              letterSpacing: "0.22em",
-              color: "#998771",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 54,
+              height: 54,
+              border: "1px solid rgba(243,242,238,0.2)",
+              fontSize: 28,
+              color: "#bd93f9",
             }}
           >
-            {`${lastName} · BR`}
+            JG
           </div>
         </div>
       </div>
@@ -235,9 +152,9 @@ export default async function OpenGraphImage({
     {
       ...size,
       fonts: [
-        { name: "Fraunces", data: fraunces, style: "italic", weight: 500 },
-        { name: "BigShoulders", data: bigShoulders, style: "normal", weight: 900 },
-        { name: "SpaceMono", data: spaceMono, style: "normal", weight: 700 },
+        { name: "Bricolage", data: bricolageLight, style: "normal", weight: 300 },
+        { name: "Bricolage", data: bricolageSemi, style: "normal", weight: 600 },
+        { name: "Manrope", data: manrope, style: "normal", weight: 500 },
       ],
     }
   );

@@ -1,28 +1,28 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
+import { SECTION_SLUGS } from "@/lib/sections";
+
+const LOCALES = ["en", "pt"] as const;
+
+function languagesFor(path: string) {
+  const clean = path ? `/${path}` : "";
+  return {
+    en: `${SITE_URL}/en${clean}`,
+    "pt-BR": `${SITE_URL}/pt${clean}`,
+  };
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
+  const paths = ["", ...SECTION_SLUGS];
 
-  const languages = {
-    en: `${SITE_URL}/en`,
-    "pt-BR": `${SITE_URL}/pt`,
-  };
-
-  return [
-    {
-      url: `${SITE_URL}/en`,
+  return paths.flatMap((path) =>
+    LOCALES.map((locale) => ({
+      url: `${SITE_URL}/${locale}${path ? `/${path}` : ""}`,
       lastModified,
-      changeFrequency: "monthly",
-      priority: 1,
-      alternates: { languages },
-    },
-    {
-      url: `${SITE_URL}/pt`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 1,
-      alternates: { languages },
-    },
-  ];
+      changeFrequency: "monthly" as const,
+      priority: path === "" ? 1 : 0.8,
+      alternates: { languages: languagesFor(path) },
+    }))
+  );
 }

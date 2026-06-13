@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Jonas Gabriel Almeida — CV</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600&display=swap");
+
+      :root {
+        --ink: #1b1820;
+        --soft: #45414e;
+        --muted: #6f6a7c;
+        --accent: #6c3fd0;
+        --rule: #e5e1ec;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      @page {
+        size: A4;
+        margin: 10mm 13mm;
+      }
+
+      body {
+        font-family: "Hanken Grotesk", system-ui, -apple-system, Arial, sans-serif;
+        font-size: 9pt;
+        line-height: 1.32;
+        color: var(--soft);
+        background: #fff;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      header {
+        border-bottom: 2px solid var(--ink);
+        padding-bottom: 9px;
+        margin-bottom: 11px;
+      }
+      h1 {
+        font-family: "Bricolage Grotesque", system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 22pt;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+        line-height: 1;
+      }
+      .title {
+        margin-top: 4px;
+        font-family: "Bricolage Grotesque", system-ui, sans-serif;
+        font-weight: 500;
+        font-size: 10pt;
+        color: var(--accent);
+      }
+      .contact {
+        margin-top: 7px;
+        font-size: 8pt;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .contact .sep {
+        color: var(--rule);
+        margin: 0 6px;
+      }
+
+      section {
+        margin-top: 10px;
+      }
+      h2 {
+        font-family: "Bricolage Grotesque", system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 8.5pt;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink);
+        padding-bottom: 4px;
+        margin-bottom: 7px;
+        border-bottom: 1px solid var(--rule);
+      }
+      h2::before {
+        content: "";
+        display: inline-block;
+        width: 13px;
+        height: 2px;
+        background: var(--accent);
+        vertical-align: middle;
+        margin-right: 8px;
+        margin-bottom: 3px;
+      }
+
+      .summary {
+        font-size: 9.3pt;
+        color: var(--soft);
+        line-height: 1.42;
+      }
+
+      .job {
+        margin-bottom: 7px;
+        break-inside: avoid;
+      }
+      .job:last-child {
+        margin-bottom: 0;
+      }
+      .role {
+        font-weight: 600;
+        font-size: 9.6pt;
+        color: var(--ink);
+      }
+      .company {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .meta {
+        font-size: 7.8pt;
+        color: var(--muted);
+        margin-top: 1px;
+        font-variant-numeric: tabular-nums;
+      }
+      ul {
+        list-style: none;
+        margin-top: 4px;
+      }
+      li {
+        position: relative;
+        padding-left: 13px;
+        margin-top: 2px;
+        font-size: 8.7pt;
+        color: var(--soft);
+        line-height: 1.34;
+      }
+      li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 6px;
+        width: 6px;
+        height: 1.5px;
+        background: var(--accent);
+      }
+      li .yr {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .project {
+        margin-bottom: 5px;
+        break-inside: avoid;
+      }
+      .project-line {
+        font-size: 8.8pt;
+      }
+      .project-name {
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .project-link {
+        font-size: 7.8pt;
+        margin-left: 6px;
+      }
+      .project-desc {
+        color: var(--soft);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 26px;
+      }
+
+      .row {
+        display: flex;
+        gap: 10px;
+        margin-top: 3px;
+        font-size: 8.8pt;
+      }
+      .row .k {
+        flex: 0 0 84px;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .row .v {
+        color: var(--soft);
+      }
+      .item {
+        margin-top: 3px;
+      }
+      .item .h {
+        font-weight: 600;
+        color: var(--ink);
+        font-size: 9pt;
+      }
+      .item .s {
+        font-size: 8.2pt;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Jonas Gabriel Almeida</h1>
+      <p class="title">
+        Senior Software Engineer — Full-stack JavaScript / TypeScript
+      </p>
+      <p class="contact">
+        Maringá, Paraná, Brazil <span class="sep">·</span>
+        jgalmeida1993@gmail.com <span class="sep">·</span> +55 43 99640-4081
+        <span class="sep">·</span> <a href="https://jgalmeida.dev">jgalmeida.dev</a>
+        <span class="sep">·</span>
+        <a href="https://www.linkedin.com/in/jgalmeida93">linkedin.com/in/jgalmeida93</a>
+        <span class="sep">·</span>
+        <a href="https://github.com/jgalmeida93">github.com/jgalmeida93</a>
+      </p>
+    </header>
+
+    <section>
+      <h2>Summary</h2>
+      <p class="summary">
+        Senior software engineer with 6+ years building scalable,
+        high-performance web and mobile products across React, Next.js, Vue and
+        Node/TypeScript. Comfortable end-to-end — from UI craft to APIs, AWS
+        infrastructure and CI/CD — with a bias for code quality, reliability and
+        long-term maintainability. I also design and ship small independent
+        products, which keeps my eye on UX and the real cost of every decision.
+      </p>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+
+      <div class="job">
+        <div class="role">
+          Senior Software Engineer, <span class="company">Escale Digital</span>
+        </div>
+        <div class="meta">São Paulo, Brazil &nbsp;·&nbsp; Mar 2025 – Present</div>
+        <ul>
+          <li>
+            Build full-stack solutions across Vue.js, Next.js, Node.js and Ruby
+            for customer-service and intelligent-automation platforms.
+          </li>
+          <li>
+            Refactor application logic and SQL queries to cut resource usage and
+            response times; proactively resolve production bottlenecks.
+          </li>
+          <li>
+            Design and operate AWS infrastructure (Lambda, ECS, S3, CloudWatch)
+            and CI/CD pipelines, improving deployment reliability and speed.
+          </li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="role">
+          Software Engineer, <span class="company">Codebrew Labs</span>
+        </div>
+        <div class="meta">Remote &nbsp;·&nbsp; Mar 2023 – Mar 2025</div>
+        <ul>
+          <li>
+            Built and maintained full-stack web and mobile applications with
+            React, React Native and TypeScript.
+          </li>
+          <li>
+            Shipped a React Native mobile app from scratch with a focus on
+            stability and maintainability.
+          </li>
+          <li>
+            Introduced unit-testing practices that improved reliability and
+            shortened bug-resolution time.
+          </li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="role">
+          Frontend Developer, <span class="company">C6 Bank</span>
+        </div>
+        <div class="meta">Remote &nbsp;·&nbsp; Dec 2021 – Feb 2023</div>
+        <ul>
+          <li>
+            Built core features of a payroll MVP for the PJ (business) segment
+            with React and Redux.
+          </li>
+          <li>
+            Delivered the MVP in under three months with ~95% unit-test coverage;
+            built reusable UI components and improved state management.
+          </li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="role">Earlier — Frontend Developer</div>
+        <ul>
+          <li>
+            <span class="yr">Deliver IT</span> (2021) — multilingual support
+            (PT/EN/ES) with Next.js and i18n; improved onboarding and
+            accessibility.
+          </li>
+          <li>
+            <span class="yr">Sabion Digital</span> (2020–2021) — helped architect
+            and ship the Guarupass MVP, upholding code quality through reviews.
+          </li>
+          <li>
+            <span class="yr">Entenda Antes — O Mundo da Construção</span>
+            (2019–2020) — Angular features and UX improvements that lifted user
+            retention ~15%.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Selected Projects</h2>
+      <div class="project">
+        <div class="project-line">
+          <span class="project-name">crivocv</span
+          ><a class="project-link" href="https://crivocv.com">crivocv.com</a>
+          <span class="project-desc">
+            — AI résumé-tailoring SaaS: rewrites bullets per job description and
+            exports an ATS-friendly PDF. Next.js, TypeScript, PostgreSQL, Stripe,
+            Anthropic.</span
+          >
+        </div>
+      </div>
+      <div class="project">
+        <div class="project-line">
+          <span class="project-name">Ach so!</span
+          ><a class="project-link" href="https://achso.com.br">achso.com.br</a>
+          <span class="project-desc">
+            — Microlearning app for the German Partizip II; 346 verbs, A1–B2.
+            Next.js, TypeScript, Framer Motion.</span
+          >
+        </div>
+      </div>
+      <div class="project">
+        <div class="project-line">
+          <span class="project-name">Penumbria</span
+          ><a class="project-link" href="https://www.penumbria.com.br"
+            >penumbria.com.br</a
+          >
+          <span class="project-desc">
+            — Portuguese literary publication focused on typography and reading
+            experience. Next.js, MDX, Tailwind.</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <div class="row">
+        <span class="k">Languages</span>
+        <span class="v">JavaScript, TypeScript, Ruby, SQL</span>
+      </div>
+      <div class="row">
+        <span class="k">Frontend</span>
+        <span class="v"
+          >React, Next.js, Vue.js, React Native, Redux, Tailwind CSS</span
+        >
+      </div>
+      <div class="row">
+        <span class="k">Backend</span>
+        <span class="v">Node.js, REST APIs, PostgreSQL, SQLite</span>
+      </div>
+      <div class="row">
+        <span class="k">Cloud / Ops</span>
+        <span class="v">AWS (Lambda, ECS, S3, CloudWatch), CI/CD</span>
+      </div>
+      <div class="row">
+        <span class="k">Practices</span>
+        <span class="v"
+          >Unit testing (Jest), i18n, accessibility, Agile methodologies</span
+        >
+      </div>
+    </section>
+
+    <section class="grid">
+      <div>
+        <h2>Education</h2>
+        <div class="item">
+          <div class="h">FATEC Ourinhos</div>
+          <div class="s">
+            Technologist Degree, Systems Analysis &amp; Development · 2014–2018
+          </div>
+        </div>
+        <h2 style="margin-top: 11px">Languages</h2>
+        <div class="item">
+          <div class="s" style="color: var(--soft)">
+            Portuguese (Native) · English (Professional)
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>Certifications</h2>
+        <div class="item">
+          <div class="h">JavaScript Fundamentals</div>
+          <div class="s">Erick Wendel</div>
+        </div>
+        <div class="item">
+          <div class="h">Laravel Framework</div>
+          <div class="s">MPro Consultoria</div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

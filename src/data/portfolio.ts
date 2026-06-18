@@ -42,6 +42,20 @@ export const portfolioData: PortfolioData = {
       accent: "#0c2a26",
     },
     {
+      id: "suresourcing",
+      title: "Sure Sourcing",
+      description: {
+        en: "Import-sourcing consultancy for foreign-trade buyers. Vets suppliers at the origin, calculates the true landed cost — NCM, Incoterms, customs — and protects the margin before a single container ships.",
+        pt: "Consultoria de sourcing e importação para compradores de comex. Audita fornecedores na origem, calcula o custo real de chegada — NCM, Incoterms, alfândega — e protege a margem antes do primeiro contêiner embarcar.",
+      },
+      technologies: ["Next.js", "TypeScript", "Tailwind", "Resend"],
+      demoUrl: "https://www.suresourcing.com.br/",
+      featured: true,
+      year: "2026",
+      category: { en: "Trade Consultancy", pt: "Consultoria de Comex" },
+      accent: "#be7350",
+    },
+    {
       id: "penumbria",
       title: "Penumbria",
       description: {

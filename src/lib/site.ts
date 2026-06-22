@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import type { Locale } from "@/types/portfolio";
 
+// Domínio canônico do site. Em produção precisa bater com o host onde o sitemap é
+// servido (jgalmeida.dev), senão o Google rejeita as URLs como fora do domínio.
+// Não usamos VERCEL_URL: é o domínio efêmero do deploy, nunca o domínio indexado.
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  (process.env.NODE_ENV === "production" ? "https://jgalmeida.dev" : "http://localhost:3000");
 
 export const SITE_NAME = "Jonas G. Almeida";
 

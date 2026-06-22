@@ -9,17 +9,16 @@ function languagesFor(path: string) {
   return {
     en: `${SITE_URL}/en${clean}`,
     "pt-BR": `${SITE_URL}/pt${clean}`,
+    "x-default": `${SITE_URL}/en${clean}`,
   };
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
   const paths = ["", ...SECTION_SLUGS];
 
   return paths.flatMap((path) =>
     LOCALES.map((locale) => ({
       url: `${SITE_URL}/${locale}${path ? `/${path}` : ""}`,
-      lastModified,
       changeFrequency: "monthly" as const,
       priority: path === "" ? 1 : 0.8,
       alternates: { languages: languagesFor(path) },

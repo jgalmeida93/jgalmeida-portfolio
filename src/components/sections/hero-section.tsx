@@ -134,7 +134,7 @@ export function HeroSection({ title }: HeroSectionProps) {
           fill
           priority
           sizes="100vw"
-          className="hero-portrait translate-x-[7%] object-cover object-[56%_24%] md:object-[58%_28%]"
+          className="hero-portrait origin-left scale-[1.16] object-cover object-[56%_24%] md:object-[58%_28%]"
         />
         <span
           aria-hidden
@@ -148,7 +148,7 @@ export function HeroSection({ title }: HeroSectionProps) {
           fill
           priority
           sizes="100vw"
-          className="translate-x-[7%] object-cover object-[56%_24%] md:object-[58%_28%]"
+          className="origin-left scale-[1.16] object-cover object-[56%_24%] md:object-[58%_28%]"
         />
         <div aria-hidden className="hero-veil absolute inset-0" />
       </div>

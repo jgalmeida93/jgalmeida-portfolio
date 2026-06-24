@@ -135,7 +135,7 @@ export function HeroSection({ title }: HeroSectionProps) {
           priority
           quality={92}
           sizes="100vw"
-          className="object-cover object-[50%_35%]"
+          className="object-cover object-[50%_35%] saturate-[.72] brightness-[.92]"
         />
         <span
           aria-hidden

@@ -15,6 +15,7 @@ export function HomeContent() {
         timezone={portfolioData.timezone}
         availability={L(portfolioData.availability)}
         title={L(portfolioData.title)}
+        projects={portfolioData.projects}
       />
       <Marquee items={[...t.marquee.tags]} />
     </>

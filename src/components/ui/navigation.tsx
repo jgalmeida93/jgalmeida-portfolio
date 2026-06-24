@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { useApp } from "@/contexts/app-context";
 import { localeHref } from "@/lib/site";
 import { SECTION_SLUGS } from "@/lib/sections";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LocaleToggle } from "@/components/ui/locale-toggle";
 import { Logo } from "@/components/ui/logo";
 
@@ -33,12 +32,28 @@ export function Navigation() {
 
   const isActive = (href: string) => pathname === href;
 
+  // The home hero is a dark purple colour block in both themes, so while the
+  // transparent nav sits over it (home, not yet scrolled) force light tokens.
+  const overHero = pathname === `/${locale}` && !scrolled;
+  const heroTokens = {
+    "--ink": "rgba(255,255,255,0.82)",
+    "--ink-soft": "rgba(255,255,255,0.66)",
+    "--ink-muted": "rgba(255,255,255,0.56)",
+    "--ink-faint": "rgba(255,255,255,0.4)",
+    "--accent": "#d9c2ff",
+    "--rule": "rgba(255,255,255,0.12)",
+    "--rule-strong": "rgba(255,255,255,0.24)",
+  } as React.CSSProperties;
+
   return (
     <header
+      style={overHero ? heroTokens : undefined}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
           ? "border-b border-[var(--rule)] bg-[var(--bg)]/80 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
+          : overHero
+            ? "border-b border-white/10 bg-black/[0.34] backdrop-blur-md"
+            : "border-b border-transparent bg-transparent"
       }`}
     >
       <div className="mx-auto flex w-full max-w-[1320px] items-center justify-between gap-4 px-5 py-4 md:px-10">
@@ -86,7 +101,6 @@ export function Navigation() {
 
           <span className="hidden h-4 w-px bg-[var(--rule)] sm:block" />
           <LocaleToggle />
-          <ThemeToggle />
 
           <Link
             href={localeHref(locale, "contact")}

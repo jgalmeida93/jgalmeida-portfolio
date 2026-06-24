@@ -1,9 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Project } from "@/types/portfolio";
 import { useApp } from "@/contexts/app-context";
 import { SectionMarker } from "@/components/ui/section-marker";
+
+function projectHost(project: Project) {
+  if (!project.demoUrl) return "preview";
+  return new URL(project.demoUrl).host.replace(/^www\./, "");
+}
 
 interface ProjectsSectionProps {
   projects: Project[];
@@ -16,27 +22,64 @@ interface CatalogEntryProps {
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-function ProjectVisual({ project, num }: { project: Project; num: string }) {
+function ProjectVisual({
+  project,
+  priority,
+}: {
+  project: Project;
+  priority?: boolean;
+}) {
   const accent = project.accent ?? "var(--accent)";
+  const host = projectHost(project);
 
   return (
-    <div
-      className="absolute inset-0 flex flex-col justify-between p-8"
-      style={{
-        background: `radial-gradient(120% 120% at 80% 0%, ${accent}33, transparent 55%), var(--bg-elev)`,
-      }}
-    >
-      <div className="flex items-start justify-between">
-        <span className="eyebrow text-[var(--ink-muted)]">{num}</span>
-        <span className="eyebrow text-[var(--ink-faint)]">
-          {project.demoUrl ? new URL(project.demoUrl).host : "preview"}
+    <div className="absolute inset-0 flex flex-col">
+      {/* Browser chrome — neutral, lets the real screenshot carry the colour */}
+      <div className="flex items-center gap-3 border-b border-[var(--rule)] bg-[var(--bg-card)] px-4 py-3">
+        <span aria-hidden className="flex gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-[var(--rule-strong)]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[var(--rule-strong)]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[var(--rule-strong)]" />
+        </span>
+        <span className="truncate font-sans text-[11px] tracking-[0.04em] text-[var(--ink-faint)]">
+          {host}
         </span>
       </div>
-      <div
-        className="font-display text-[clamp(7rem,18vw,15rem)] font-light leading-[0.8] text-[var(--ink)]"
-        style={{ opacity: 0.07 }}
-      >
-        {project.title.charAt(0)}
+
+      {/* Real screenshot */}
+      <div className="relative flex-1 overflow-hidden">
+        {project.imageUrl ? (
+          <Image
+            src={project.imageUrl}
+            alt={`${project.title} — screenshot`}
+            fill
+            priority={priority}
+            sizes="(max-width: 768px) 100vw, 55vw"
+            className="object-cover object-top transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+          />
+        ) : (
+          <div
+            className="absolute inset-0 flex items-end p-8"
+            style={{
+              background: `radial-gradient(120% 120% at 80% 0%, ${accent}33, transparent 55%), var(--bg-elev)`,
+            }}
+          >
+            <span
+              className="font-display text-[clamp(7rem,18vw,15rem)] font-light leading-[0.8] text-[var(--ink)]"
+              style={{ opacity: 0.07 }}
+            >
+              {project.title.charAt(0)}
+            </span>
+          </div>
+        )}
+        {/* Accent veil on hover — ties the card to the brand without tinting the shot at rest */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          style={{
+            background: `linear-gradient(to top, ${accent}1f, transparent 40%)`,
+          }}
+        />
       </div>
     </div>
   );
@@ -105,7 +148,7 @@ function CatalogEntry({ project, index }: CatalogEntryProps) {
         }`}
       >
         <div className="lift relative aspect-[16/10] w-full overflow-hidden border border-[var(--rule)] bg-[var(--bg-elev)] group-hover:border-[var(--rule-strong)] group-hover:shadow-[var(--shadow-soft)]">
-          <ProjectVisual project={project} num={num} />
+          <ProjectVisual project={project} priority={index === 0} />
         </div>
       </div>
     </div>

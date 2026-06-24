@@ -10,7 +10,7 @@ import { downloadCV } from "@/lib/cv";
 import { SECTION_SLUGS } from "@/lib/sections";
 
 export function CommandMenu() {
-  const { t, locale, toggleTheme, toggleLocale } = useApp();
+  const { t, locale, toggleLocale } = useApp();
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
@@ -145,7 +145,6 @@ export function CommandMenu() {
             <Command.Group heading={c.groups.actions}>
               <Item label={c.actions.cv} onSelect={() => run(downloadCV)} />
               <Item label={c.actions.copyEmail} onSelect={() => run(copyEmail)} />
-              <Item label={c.actions.theme} onSelect={() => run(toggleTheme)} />
               <Item label={c.actions.language} onSelect={() => run(toggleLocale)} />
             </Command.Group>
           </Command.List>

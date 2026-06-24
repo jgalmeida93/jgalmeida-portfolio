@@ -23,6 +23,7 @@ const en = {
     cta: "View work",
     cv: "Download CV",
     scroll: "Scroll",
+    recent: "Recent work",
   },
   marquee: {
     tags: [
@@ -135,6 +136,7 @@ const pt: Dictionary = {
     cta: "Ver trabalhos",
     cv: "Baixar CV",
     scroll: "Rolar",
+    recent: "Trabalhos recentes",
   },
   marquee: {
     tags: [

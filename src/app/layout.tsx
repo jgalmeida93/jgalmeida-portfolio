@@ -5,9 +5,10 @@ import "./globals.css";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 
 // Bricolage Grotesque — modern display grotesque; the headline voice.
+// Loaded as a variable font (continuous wght axis) so the hero name can
+// react to the cursor; one variable file also serves every static weight.
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-bricolage",
   display: "swap",
 });
@@ -48,19 +49,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Inline script: read theme from localStorage before React hydrates (avoids FOUC).
-const themeBootstrap = `
-(function() {
-  try {
-    var theme = localStorage.getItem('jg-portfolio-theme');
-    if (theme !== 'light' && theme !== 'dark') theme = 'dark';
-    document.documentElement.dataset.theme = theme;
-  } catch (e) {
-    document.documentElement.dataset.theme = 'dark';
-  }
-})();
-`;
-
 export default function RootLayout({
   children,
 }: {
@@ -70,12 +58,8 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="dark"
-      suppressHydrationWarning
       className={`${bricolage.variable} ${satoshi.variable}`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
-      </head>
       <body className="flex min-h-screen flex-col overflow-x-hidden">
         {children}
       </body>

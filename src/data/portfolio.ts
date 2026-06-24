@@ -21,6 +21,7 @@ export const portfolioData: PortfolioData = {
     {
       id: "crivocv",
       title: "crivocv",
+      imageUrl: "/work/crivocv.webp",
       description: {
         en: "Resumes tailored per job with AI. Paste the description and get bullets rewritten as nouns of action with metrics, plus an ATS-friendly PDF — in the job's own language.",
         pt: "Currículos adaptados por vaga com IA. Cola a descrição da vaga e recebe bullets reescritos com substantivos de ação e métricas, mais um PDF ATS-friendly — no idioma da vaga.",
@@ -44,6 +45,7 @@ export const portfolioData: PortfolioData = {
     {
       id: "suresourcing",
       title: "Sure Sourcing",
+      imageUrl: "/work/suresourcing.webp",
       description: {
         en: "Import-sourcing consultancy for foreign-trade buyers. Vets suppliers at the origin, calculates the true landed cost — NCM, Incoterms, customs — and protects the margin before a single container ships.",
         pt: "Consultoria de sourcing e importação para compradores de comex. Audita fornecedores na origem, calcula o custo real de chegada — NCM, Incoterms, alfândega — e protege a margem antes do primeiro contêiner embarcar.",
@@ -58,6 +60,7 @@ export const portfolioData: PortfolioData = {
     {
       id: "penumbria",
       title: "Penumbria",
+      imageUrl: "/work/penumbria.webp",
       description: {
         en: "A literary publication in Portuguese — short-form prose and poetry that lives in the half-light between what is said and what stays silent.",
         pt: "Uma publicação literária em português — prosa curta e poesia que vive na penumbra entre o que é dito e o que permanece em silêncio.",
@@ -72,6 +75,7 @@ export const portfolioData: PortfolioData = {
     {
       id: "achso",
       title: "Ach so!",
+      imageUrl: "/work/achso.webp",
       description: {
         en: "Microlearning for the German Partizip II. Two-minute sessions, tap-only answers, 346 verbs across A1–B2.",
         pt: "Microlearning para o Partizip II alemão. Sessões de dois minutos, respostas só com toque, 346 verbos do A1 ao B2.",
@@ -86,6 +90,7 @@ export const portfolioData: PortfolioData = {
     {
       id: "neurodecks",
       title: "Neurodecks",
+      imageUrl: "/work/neurodecks.webp",
       description: {
         en: "Spaced-repetition flashcards built for people who actually want to learn, not just collect decks.",
         pt: "Flashcards com repetição espaçada para quem quer aprender de verdade, não só colecionar baralhos.",
@@ -100,6 +105,7 @@ export const portfolioData: PortfolioData = {
     {
       id: "seiszora",
       title: "SeisZora",
+      imageUrl: "/work/seiszora.webp",
       description: {
         en: "Time tracking and project reporting with authentication and PDF delivery. Modular, deliberately small surface area.",
         pt: "Controle de horas e relatórios de projetos com autenticação e entrega em PDF. Modular, com superfície deliberadamente pequena.",
@@ -114,6 +120,7 @@ export const portfolioData: PortfolioData = {
     {
       id: "codebrew",
       title: "CodeBrew Labs",
+      imageUrl: "/work/codebrew.webp",
       description: {
         en: "Technical writing platform with an emphasis on performance, SEO, and the typographic decisions that make long-form reading feel effortless.",
         pt: "Plataforma de conteúdo técnico com foco em performance, SEO e as decisões tipográficas que tornam a leitura longa fluida.",

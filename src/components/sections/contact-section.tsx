@@ -20,8 +20,14 @@ export function ContactSection({ contact, availability }: ContactSectionProps) {
     { label: t.contact.labels.email, value: contact.email, href: `mailto:${contact.email}` },
     { label: t.contact.labels.github, value: "github.com/jgalmeida93", href: contact.github },
     { label: t.contact.labels.linkedin, value: "in/jgalmeida93", href: contact.linkedin },
-    ...(contact.twitter
-      ? [{ label: t.contact.labels.twitter, value: "@jgalmeida93", href: contact.twitter }]
+    ...(contact.whatsapp
+      ? [
+          {
+            label: t.contact.labels.whatsapp,
+            value: "+55 43 99640-4081",
+            href: `https://wa.me/${contact.whatsapp}`,
+          },
+        ]
       : []),
   ];
 

@@ -29,7 +29,6 @@ export function PersonJsonLd({ locale }: PersonJsonLdProps) {
     sameAs: [
       portfolioData.contact.github,
       portfolioData.contact.linkedin,
-      portfolioData.contact.twitter,
     ].filter(Boolean),
     knowsAbout: [
       "Software Engineering",

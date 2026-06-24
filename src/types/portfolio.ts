@@ -36,7 +36,7 @@ export interface ContactInfo {
   email: string;
   github: string;
   linkedin: string;
-  twitter?: string;
+  whatsapp?: string;
 }
 
 export interface PortfolioData {

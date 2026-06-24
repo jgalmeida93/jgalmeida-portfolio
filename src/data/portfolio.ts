@@ -221,6 +221,6 @@ export const portfolioData: PortfolioData = {
     email: "jgalmeida1993@gmail.com",
     github: "https://github.com/jgalmeida93",
     linkedin: "https://linkedin.com/in/jgalmeida93",
-    twitter: "https://twitter.com/jgalmeida93",
+    whatsapp: "5543996404081",
   },
 };

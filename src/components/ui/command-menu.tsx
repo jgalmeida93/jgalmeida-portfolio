@@ -134,10 +134,12 @@ export function CommandMenu() {
                 label={c.actions.linkedin}
                 onSelect={() => run(() => openUrl(contact.linkedin))}
               />
-              {contact.twitter && (
+              {contact.whatsapp && (
                 <Item
-                  label={c.actions.twitter}
-                  onSelect={() => run(() => openUrl(contact.twitter as string))}
+                  label={c.actions.whatsapp}
+                  onSelect={() =>
+                    run(() => openUrl(`https://wa.me/${contact.whatsapp}`))
+                  }
                 />
               )}
             </Command.Group>

@@ -147,7 +147,7 @@ body::before {
 .hero-field {
   /* Flat field matched to the hero photo's own background so any edge stays
      seamless and load shows no flash. No top gradient. */
-  background: #271a28;
+  background: #362143;
 }
 
 /* The portrait already carries its own purple background, so it is shown

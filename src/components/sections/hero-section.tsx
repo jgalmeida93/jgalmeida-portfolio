@@ -133,8 +133,9 @@ export function HeroSection({ title }: HeroSectionProps) {
           alt="Jonas Almeida"
           fill
           priority
+          quality={92}
           sizes="100vw"
-          className="object-cover object-[50%_22%] md:object-[50%_26%]"
+          className="object-cover object-[50%_35%]"
         />
         <span
           aria-hidden
@@ -147,8 +148,9 @@ export function HeroSection({ title }: HeroSectionProps) {
           alt=""
           fill
           priority
+          quality={92}
           sizes="100vw"
-          className="object-cover object-[50%_22%] md:object-[50%_26%]"
+          className="object-cover object-[50%_35%]"
         />
         <div aria-hidden className="hero-veil absolute inset-0" />
       </div>

@@ -124,9 +124,9 @@ export function HeroSection({ title }: HeroSectionProps) {
       style={{ ["--name-wght" as string]: "720" }}
       className="hero-field relative -mt-16 min-h-[100svh] w-full overflow-hidden"
     >
-      {/* Portrait sandwich: base photo → faint name → subject cutout (which
-          occludes the name, so it reads as written *behind* the head) → veil.
-          Base and cutout share identical object-position so they align. */}
+      {/* Full-bleed centred portrait: base photo → faint name → subject cutout
+          (occludes the name so it reads behind the head) → veil. Base and cutout
+          share the same object-position so they align. */}
       <div className="absolute inset-0">
         <Image
           src="/hero-portrait.webp"
@@ -134,11 +134,11 @@ export function HeroSection({ title }: HeroSectionProps) {
           fill
           priority
           sizes="100vw"
-          className="hero-portrait origin-left scale-[1.16] object-cover object-[56%_24%] md:object-[58%_28%]"
+          className="object-cover object-[50%_22%] md:object-[50%_26%]"
         />
         <span
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-[7%] -translate-x-1/2 select-none whitespace-nowrap font-display text-[clamp(8rem,30vw,30rem)] font-bold uppercase leading-none tracking-tighter text-white/[0.10]"
+          className="pointer-events-none absolute left-1/2 top-[8%] -translate-x-1/2 select-none whitespace-nowrap font-display text-[clamp(7rem,28vw,28rem)] font-bold uppercase leading-none tracking-tighter text-white/[0.10]"
         >
           {FIRST_NAME}
         </span>
@@ -148,7 +148,7 @@ export function HeroSection({ title }: HeroSectionProps) {
           fill
           priority
           sizes="100vw"
-          className="origin-left scale-[1.16] object-cover object-[56%_24%] md:object-[58%_28%]"
+          className="object-cover object-[50%_22%] md:object-[50%_26%]"
         />
         <div aria-hidden className="hero-veil absolute inset-0" />
       </div>

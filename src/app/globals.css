@@ -145,9 +145,9 @@ body::before {
    the whole hero. The portrait is screen-blended so its dark background
    dissolves into the field and the subject emerges in the accent. */
 .hero-field {
-  /* Flat field matched to the hero photo's own background (#30222e) so the
-     portrait's horizontal shift reveals no seam. No top gradient. */
-  background: #30222e;
+  /* Flat field matched to the hero photo's own background so any edge stays
+     seamless and load shows no flash. No top gradient. */
+  background: #271a28;
 }
 
 /* The portrait already carries its own purple background, so it is shown
